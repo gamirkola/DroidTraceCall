@@ -2,7 +2,7 @@
 
 import os
 from pyfiglet import figlet_format
-import subprocess
+from subprocess import call
 strace_repo = 'https://github.com/strace/strace'
 strace_dir = 'tools/strace/strace_repo/'
 
@@ -16,7 +16,8 @@ if __name__ == '__main__':
     strace_compile = input("[+] Do you want to compile the strace executable? (y/n): ")
     if strace_compile == 'y':
         #launch strace compile script
-        subprocess.call('./scripts/strace/compile_strace_64bit.sh')
+        rc = call("./scripts/strace/compile_strace_aarch64.sh", shell=True)
+
 
 
 

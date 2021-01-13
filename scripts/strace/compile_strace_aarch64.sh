@@ -28,5 +28,5 @@ echo "Done!"
 echo "Extracting strace executable..."
 cd ../../
 cp ./tools/strace/usr/local/bin/strace ./tools/strace/strace
-#rm -r ./tools/strace/usr/
+rm -r ./tools/strace/usr/
 echo "Done!"
