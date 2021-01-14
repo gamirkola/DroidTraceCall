@@ -24,9 +24,17 @@ if __name__ == '__main__':
     strace_push = input("[+] Do you want to push the strace executable to the phone? (y/n): ")
     if strace_push == 'y':
         #launch strace compile script
-        print('[*] Gaining root permissions...')
+        print('[*] Granting root permissions...')
         os.system('adb root')
         print('[*] Pushing strace to /data/DroidTraceCall/')
         os.system('adb push ./tools/strace/strace /data/DroidTraceCall/strace')
+        print('[*] Making strace bin executable...')
+        os.system('adb shell chmod +x /data/DroidTraceCall/strace')
 
+    #after all the tools are configured start to build the probe.
+    print('[*] Initialaizing probe build steps...')
+    #at the moment only the strace test probe is pushed
+    print('[*] Pushing probe to the device...')
+    os.system('adb push ./scripts/probe/strace_all_proc.sh /data/DroidTraceCall/strace_all_proc.sh')
+    print('[*] Making probe script executable...')
 
