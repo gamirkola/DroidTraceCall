@@ -95,20 +95,19 @@ if __name__ == '__main__':
         device.shell('chmod +x /data/DroidTraceCall/strace')
 
 
+    probe_push = input("[+] Do you want to push the probe to the device? (y/n): ")
+    if probe_push == 'y':
+        #after all the tools are configured start to build the probe.
+        print('[*] Initialaizing probe build steps...')
+        print('[*] Making the filesystem writable...')
+        device.shell('mount -o rw,remount /')
+        #at the moment only the strace test probe is pushed
+        print('[*] Pushing probe to the device...')
+        device.push('./scripts/probe/strace_all_proc.sh', '/data/DroidTraceCall/strace_all_proc.sh')
+        print('[*] Making probe script executable...')
+        device.shell('chmod +x /data/DroidTraceCall/strace_all_proc.sh')
 
-    # #after all the tools are configured start to build the probe.
-    # print('[*] Initialaizing probe build steps...')
-    # print('[*] Making the filesystem writable...')
-    # os.system('adb shell mount -o rw,remount /')
-    # #at the moment only the strace test probe is pushed
-    # print('[*] Pushing probe to the device...')
-    # os.system('adb push ./scripts/probe/strace_all_proc.sh /data/DroidTraceCall/strace_all_proc.sh')
-    # print('[*] Making probe script executable...')
-    # os.system('adb shell chmod +x /data/DroidTraceCall/strace_all_proc.sh')
-    # # print('Creating log folder...')
-    # # os.system('adb shell mkdir /data/DroidTraceCall/logs')
-    #
-    # probe_start = input("[+] Do you want to start the probe? (y/n): ")
-    # if probe_start == 'y':
-    #     os.system('adb shell /data/DroidTraceCall/strace_all_proc.sh')
+    probe_start = input("[+] Do you want to start the probe now? (y/n): ")
+    if probe_start == 'y':
+        device.shell('./data/DroidTraceCall/strace_all_proc.sh')
 
