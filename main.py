@@ -6,6 +6,7 @@ from pyfiglet import figlet_format
 import subprocess
 from adb_shell.adb_device import AdbDeviceUsb, AdbDeviceTcp
 from adb_shell.auth.sign_pythonrsa import PythonRSASigner
+import keyboard
 
 
 # Load the public and private keys
@@ -109,5 +110,16 @@ if __name__ == '__main__':
 
     probe_start = input("[+] Do you want to start the probe now? (y/n): ")
     if probe_start == 'y':
-        device.shell('./data/DroidTraceCall/strace_all_proc.sh')
+        device.shell("su -c 'cd /data/DroidTraceCall/ && nohup ./strace_all_proc.sh > /dev/null &'", 9999, 9999)
+        print('[*] Probe strated, press Q to quit...')
+        while True:
+            if keyboard.is_pressed('q'):
+                device.shell('pkill -f strace')
+                print("\n[*] Probe terminated... Thanks")
+                break
+            else:
+                pass
 
+    pull_logs = input("[+] Do you want to pull the logs? (y/n): ")
+    if pull_logs == 'y':
+        device.pull('/data/logs')
