@@ -112,14 +112,10 @@ if __name__ == '__main__':
     if probe_start == 'y':
         device.shell("su -c 'cd /data/DroidTraceCall/ && nohup ./strace_all_proc.sh > /dev/null &'", 9999, 9999)
         print('[*] Probe strated, press Q to quit...')
-        while True:
-            if keyboard.is_pressed('q'):
-                device.shell('pkill -f strace')
-                print("\n[*] Probe terminated... Thanks")
-                break
-            else:
-                pass
+        a = input('[*] Press a key to stop the probe: ')
+        if a:
+            device.shell('pkill -f strace')
 
     pull_logs = input("[+] Do you want to pull the logs? (y/n): ")
     if pull_logs == 'y':
-        device.pull('/data/logs')
+        device.pull('/data/DroiTraceCall/logs.gz', 'logs.gz')
