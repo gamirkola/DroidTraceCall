@@ -1,0 +1,21 @@
+4546  epoll_pwait(56,  <unfinished ...>
+4462  epoll_pwait(44,  <unfinished ...>
+4461  epoll_pwait(42,  <unfinished ...>
+4436  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2086  futex(0x7467af4120, FUTEX_WAIT_PRIVATE, 2, NULL <unfinished ...>
+2067  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2066  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2063  futex(0x7467af1a90, FUTEX_WAIT_PRIVATE, 3, NULL <unfinished ...>
+2061  futex(0x74576241b0, FUTEX_WAIT_PRIVATE, 3, NULL <unfinished ...>
+2060  futex(0x7467a14d50, FUTEX_WAIT_PRIVATE, 8, NULL <unfinished ...>
+2059  ppoll([{fd=3, events=POLLIN}, {fd=-1}, {fd=33, events=POLLIN|POLLRDHUP}, {fd=-1}], 4, NULL, NULL, 0 <unfinished ...>
+2058  rt_sigtimedwait([QUIT USR1 RTMIN], NULL, NULL, 8 <unfinished ...>
+2053  futex(0x7467af36d8, FUTEX_WAIT_PRIVATE, 37, NULL <unfinished ...>
+14818 ioctl(9, BINDER_WRITE_READ <unfinished ...>
+4551  futex(0x7467bb5590, FUTEX_WAIT_PRIVATE, 1, NULL <unfinished ...>
+4483  read(49,  <unfinished ...>
+3167  futex(0x7457787c3c, FUTEX_WAIT_PRIVATE, 2, NULL <unfinished ...>
+2447  epoll_pwait(40,  <unfinished ...>
+2069  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2062  futex(0x7457624410, FUTEX_WAIT_PRIVATE, 3, NULL <unfinished ...>
+2047  epoll_pwait(35,  <detached ...>

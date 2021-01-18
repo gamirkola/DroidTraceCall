@@ -1,0 +1,98 @@
+15347 read(40,  <unfinished ...>
+15050 ioctl(9, BINDER_WRITE_READ <unfinished ...>
+15046 futex(0x74576a9fe0, FUTEX_WAIT_PRIVATE, 1, NULL <unfinished ...>
+15042 ioctl(9, BINDER_WRITE_READ <unfinished ...>
+15041 ioctl(9, BINDER_WRITE_READ <unfinished ...>
+15040 ioctl(9, BINDER_WRITE_READ <unfinished ...>
+15039 futex(0x7467af1d30, FUTEX_WAIT_PRIVATE, 3, NULL <unfinished ...>
+15038 futex(0x745b800250, FUTEX_WAIT_PRIVATE, 4, NULL <unfinished ...>
+15037 futex(0x745b800330, FUTEX_WAIT_PRIVATE, 4, NULL <unfinished ...>
+15036 futex(0x7467a14d50, FUTEX_WAIT_PRIVATE, 10669, NULL <unfinished ...>
+15035 ppoll([{fd=3, events=POLLIN}, {fd=-1}, {fd=33, events=POLLIN|POLLRDHUP}, {fd=-1}], 4, NULL, NULL, 0 <unfinished ...>
+15034 rt_sigtimedwait([QUIT USR1 RTMIN], NULL, NULL, 8 <unfinished ...>
+15029 futex(0x7467af36d8, FUTEX_WAIT_PRIVATE, 12233, NULL <unfinished ...>
+15023 epoll_pwait(35,  <unfinished ...>
+15040 <... ioctl resumed>, 0x7458059b18) = 0
+15040 futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+15040 mprotect(0x12d00000, 262144, PROT_READ|PROT_WRITE) = 0
+15040 write(34, "\1\0\0\0\0\0\0\0", 8 <unfinished ...>
+15041 <... ioctl resumed>, 0x7457f5cb18) = 0
+15041 futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+15041 futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+15041 ioctl(9, BINDER_WRITE_READ <unfinished ...>
+15040 <... write resumed>)              = 8
+15023 <... epoll_pwait resumed>[{events=EPOLLIN, data={u32=34, u64=34}}], 16, -1, NULL, 8) = 1
+15023 read(34, "\1\0\0\0\0\0\0\0", 8)   = 8
+15023 sched_yield()                     = 0
+15023 sched_yield()                     = 0
+15023 sched_yield()                     = 0
+15023 sched_yield()                     = 0
+15023 sched_yield()                     = 0
+15023 sched_yield()                     = 0
+15040 futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+15023 mprotect(0x12d40000, 262144, PROT_READ|PROT_WRITE <unfinished ...>
+15040 <... futex resumed>)              = 0
+15023 <... mprotect resumed>)           = 0
+15040 ioctl(9, BINDER_WRITE_READ <unfinished ...>
+15023 getuid()                          = 10011
+15023 ioctl(9, BINDER_WRITE_READ, 0x7ffe9e3938) = 0
+15023 ioctl(9, BINDER_WRITE_READ, 0x7ffe9e3948) = 0
+15023 madvise(0x7467bce000, 28672, MADV_DONTNEED) = 0
+15023 getuid()                          = 10011
+15023 ioctl(9, BINDER_WRITE_READ, 0x7ffe9e3798) = 0
+15023 ioctl(9, BINDER_WRITE_READ, 0x7ffe9e39d8) = 0
+15023 ioctl(9, BINDER_WRITE_READ, 0x7ffe9e3928) = 0
+15023 ioctl(9, BINDER_WRITE_READ, 0x7ffe9e3938) = 0
+15023 getuid()                          = 10011
+15023 epoll_pwait(35, [], 16, 0, NULL, 8) = 0
+15023 ioctl(9, BINDER_WRITE_READ, 0x7ffe9e4018) = 0
+15023 epoll_pwait(35,  <unfinished ...>
+15040 <... ioctl resumed>, 0x7458059b18) = 0
+15040 futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+15040 write(34, "\1\0\0\0\0\0\0\0", 8)  = 8
+15023 <... epoll_pwait resumed>[{events=EPOLLIN, data={u32=34, u64=34}}], 16, -1, NULL, 8) = 1
+15040 futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+15023 read(34, "\1\0\0\0\0\0\0\0", 8)   = 8
+15023 ioctl(9, BINDER_WRITE_READ <unfinished ...>
+15040 <... futex resumed>)              = 0
+15023 <... ioctl resumed>, 0x7ffe9e3928) = 0
+15023 ioctl(9, BINDER_WRITE_READ <unfinished ...>
+15040 ioctl(9, BINDER_WRITE_READ <unfinished ...>
+15023 <... ioctl resumed>, 0x7ffe9e3938) = 0
+15023 getuid( <unfinished ...>
+15040 <... ioctl resumed>, 0x7458059b18) = 0
+15040 futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+15040 futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+15040 ioctl(9, BINDER_WRITE_READ <unfinished ...>
+15023 <... getuid resumed>)             = 10011
+15023 epoll_pwait(35, [], 16, 0, NULL, 8) = 0
+15023 ioctl(9, BINDER_WRITE_READ, 0x7ffe9e4018) = 0
+15023 epoll_pwait(35,  <unfinished ...>
+15347 <... read resumed> <unfinished ...>) = ?
+15050 <... ioctl resumed> <unfinished ...>) = ?
+15046 <... futex resumed>)              = ?
+15042 <... ioctl resumed> <unfinished ...>) = ?
+15041 <... ioctl resumed> <unfinished ...>) = ?
+15040 <... ioctl resumed> <unfinished ...>) = ?
+15039 <... futex resumed>)              = ?
+15038 <... futex resumed>)              = ?
+15037 <... futex resumed>)              = ?
+15036 <... futex resumed>)              = ?
+15035 <... ppoll resumed> <unfinished ...>) = ?
+15034 <... rt_sigtimedwait resumed> <unfinished ...>) = ?
+15029 <... futex resumed>)              = ?
+15023 <... epoll_pwait resumed> <unfinished ...>) = ?
+15347 +++ killed by SIGKILL +++
+15050 +++ killed by SIGKILL +++
+15046 +++ killed by SIGKILL +++
+15042 +++ killed by SIGKILL +++
+15041 +++ killed by SIGKILL +++
+15040 +++ killed by SIGKILL +++
+15039 +++ killed by SIGKILL +++
+15038 +++ killed by SIGKILL +++
+15037 +++ killed by SIGKILL +++
+15036 +++ killed by SIGKILL +++
+15035 +++ killed by SIGKILL +++
+15034 +++ killed by SIGKILL +++
+15029 +++ killed by SIGKILL +++
+15023 +++ killed by SIGKILL +++

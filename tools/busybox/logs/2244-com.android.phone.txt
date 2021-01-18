@@ -1,0 +1,734 @@
+24776 ioctl(9, BINDER_WRITE_READ <unfinished ...>
+17496 ioctl(9, BINDER_WRITE_READ <unfinished ...>
+3403  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+3330  epoll_pwait(111,  <unfinished ...>
+2770  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2760  epoll_pwait(109,  <unfinished ...>
+2759  epoll_pwait(107,  <unfinished ...>
+2650  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2597  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2596  epoll_pwait(104,  <unfinished ...>
+2595  epoll_pwait(102,  <unfinished ...>
+2591  epoll_pwait(100,  <unfinished ...>
+2590  epoll_pwait(98,  <unfinished ...>
+2589  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2585  epoll_pwait(96,  <unfinished ...>
+2584  epoll_pwait(94,  <unfinished ...>
+2583  epoll_pwait(92,  <unfinished ...>
+2582  epoll_pwait(90,  <unfinished ...>
+2581  epoll_pwait(88,  <unfinished ...>
+2580  epoll_pwait(86,  <unfinished ...>
+2569  epoll_pwait(84,  <unfinished ...>
+2566  epoll_pwait(82,  <unfinished ...>
+2564  epoll_pwait(80,  <unfinished ...>
+2550  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2479  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2459  futex(0x7400d6443c, FUTEX_WAIT_PRIVATE, 2, NULL <unfinished ...>
+2458  epoll_pwait(78,  <unfinished ...>
+2457  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2456  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2454  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2448  epoll_pwait(76,  <unfinished ...>
+2433  epoll_pwait(74,  <unfinished ...>
+2429  epoll_pwait(72,  <unfinished ...>
+2424  epoll_pwait(70,  <unfinished ...>
+2423  epoll_pwait(68,  <unfinished ...>
+2422  epoll_pwait(66,  <unfinished ...>
+2421  epoll_pwait(64,  <unfinished ...>
+2418  epoll_pwait(61,  <unfinished ...>
+2417  epoll_pwait(59,  <unfinished ...>
+2413  epoll_pwait(57,  <unfinished ...>
+2411  epoll_pwait(55,  <unfinished ...>
+2410  epoll_pwait(53,  <unfinished ...>
+2407  epoll_pwait(51,  <unfinished ...>
+2406  epoll_pwait(49,  <unfinished ...>
+2376  ioctl(46, BINDER_WRITE_READ <unfinished ...>
+2353  epoll_pwait(43,  <unfinished ...>
+2327  futex(0x74576a9fe0, FUTEX_WAIT_PRIVATE, 4, NULL <unfinished ...>
+2295  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2288  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2278  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2276  futex(0x7467af1d70, FUTEX_WAIT_PRIVATE, 20, NULL <unfinished ...>
+2274  futex(0x74576243f0, FUTEX_WAIT_PRIVATE, 20, NULL <unfinished ...>
+2273  futex(0x7457624330, FUTEX_WAIT_PRIVATE, 20, NULL <unfinished ...>
+2272  futex(0x7467a14d50, FUTEX_WAIT_PRIVATE, 31, NULL <unfinished ...>
+2261  ppoll([{fd=3, events=POLLIN}, {fd=-1}, {fd=33, events=POLLIN|POLLRDHUP}, {fd=-1}], 4, NULL, NULL, 0 <unfinished ...>
+2259  rt_sigtimedwait([QUIT USR1 RTMIN], NULL, NULL, 8 <unfinished ...>
+2252  futex(0x7467af36d8, FUTEX_WAIT_PRIVATE, 59, NULL <unfinished ...>
+2244  epoll_pwait(35,  <unfinished ...>
+2278  <... ioctl resumed>, 0x74070a8b18) = 0
+2295  <... ioctl resumed>, 0x7403eaeb18) = 0
+2288  <... ioctl resumed>, 0x7404fabb18) = 0
+2295  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2288  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2295  <... futex resumed>)              = 0
+2278  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2295  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2278  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2295  <... futex resumed>)              = 1
+2288  <... futex resumed>)              = 0
+2278  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2288  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2278  <... futex resumed>)              = 0
+2288  <... futex resumed>)              = 0
+2288  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2295  write(34, "\1\0\0\0\0\0\0\0", 8 <unfinished ...>
+2288  <... futex resumed>)              = 0
+2278  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2288  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2295  <... write resumed>)              = 8
+2244  <... epoll_pwait resumed>[{events=EPOLLIN, data={u32=34, u64=34}}], 16, 10628, NULL, 8) = 1
+2278  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2295  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2288  <... futex resumed>)              = 0
+2244  read(34,  <unfinished ...>
+2278  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2295  <... futex resumed>)              = 0
+2288  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2244  <... read resumed>"\1\0\0\0\0\0\0\0", 8) = 8
+2295  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2288  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2288  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  getuid( <unfinished ...>
+2295  <... futex resumed>)              = 1
+2288  <... futex resumed>)              = 0
+2278  <... futex resumed>)              = 0
+2244  <... getuid resumed>)             = 1001
+2295  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2278  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2244  epoll_pwait(35,  <unfinished ...>
+2288  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2278  <... futex resumed>)              = 0
+2244  <... epoll_pwait resumed>[], 16, 0, NULL, 8) = 0
+2295  <... ioctl resumed>, 0x7403eaeb18) = 0
+2454  <... ioctl resumed>, 0x73ef279b18) = 0
+2278  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2295  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2244  getuid( <unfinished ...>
+2454  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2295  <... futex resumed>)              = 0
+2288  <... futex resumed>)              = 0
+2278  <... futex resumed>)              = 1
+2244  <... getuid resumed>)             = 1001
+2278  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2288  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2295  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  epoll_pwait(35,  <unfinished ...>
+2288  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2278  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2295  <... futex resumed>)              = 1
+2244  <... epoll_pwait resumed>[], 16, 0, NULL, 8) = 0
+2454  <... futex resumed>)              = 0
+2288  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2278  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2244  epoll_pwait(35,  <unfinished ...>
+2454  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2295  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2288  <... futex resumed>)              = 0
+2295  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2288  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2295  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2288  <... futex resumed>)              = 1
+2278  <... futex resumed>)              = 0
+2288  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2295  <... futex resumed>)              = 1
+2278  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2454  <... futex resumed>)              = 0
+2288  <... ioctl resumed>, 0x7404fabb18) = 0
+2278  <... futex resumed>)              = 0
+2454  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1) = 0
+2295  write(34, "\1\0\0\0\0\0\0\0", 8 <unfinished ...>
+2288  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2278  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2454  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2295  <... write resumed>)              = 8
+2288  <... futex resumed>)              = 0
+2278  <... futex resumed>)              = 0
+2244  <... epoll_pwait resumed>[{events=EPOLLIN, data={u32=34, u64=34}}], 16, 10429, NULL, 8) = 1
+2295  futex(0x7467aabe08, FUTEX_REQUEUE_PRIVATE, 0, 1, 0x7467aabde4 <unfinished ...>
+2288  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  read(34, "\1\0\0\0\0\0\0\0", 8)   = 8
+2454  <... futex resumed>)              = 0
+2288  <... futex resumed>)              = 1
+2454  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2244  futex(0x7467aabde4, FUTEX_WAIT_PRIVATE, 5, NULL <unfinished ...>
+2454  <... futex resumed>)              = 0
+2295  <... futex resumed>)              = 0
+2288  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2278  futex(0x7467aabe08, FUTEX_WAIT_PRIVATE, 4690, NULL <unfinished ...>
+2454  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2295  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2288  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2278  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2454  <... futex resumed>)              = 0
+2295  <... futex resumed>)              = 1
+2288  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2278  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  <... futex resumed>)              = 0
+2295  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2288  <... futex resumed>)              = 0
+2454  getuid( <unfinished ...>
+2278  <... futex resumed>)              = 0
+2295  <... futex resumed>)              = 0
+2244  getuid( <unfinished ...>
+2454  <... getuid resumed>)             = 1001
+2278  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2454  fstat(40,  <unfinished ...>
+2295  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2288  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2278  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2244  <... getuid resumed>)             = 1001
+2288  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2454  <... fstat resumed>{st_mode=S_IFCHR|0666, st_rdev=makedev(0xa, 0x37), ...}) = 0
+2244  epoll_pwait(35,  <unfinished ...>
+2454  ioctl(40, ASHMEM_GET_SIZE <unfinished ...>
+2295  <... futex resumed>)              = 0
+2288  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2278  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2244  <... epoll_pwait resumed>[], 16, 0, NULL, 8) = 0
+2454  <... ioctl resumed>, 0)           = 84
+2295  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2288  <... futex resumed>)              = 0
+2454  fstat(40,  <unfinished ...>
+2244  getuid( <unfinished ...>
+2454  <... fstat resumed>{st_mode=S_IFCHR|0666, st_rdev=makedev(0xa, 0x37), ...}) = 0
+2244  <... getuid resumed>)             = 1001
+2454  ioctl(40, ASHMEM_PIN <unfinished ...>
+2295  <... ioctl resumed>, 0x7403eaeb18) = 0
+2288  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2454  <... ioctl resumed>, 0x73ef278f20) = 0
+2244  epoll_pwait(35,  <unfinished ...>
+2454  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2295  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2288  <... futex resumed>)              = 1
+2278  <... futex resumed>)              = 0
+2244  <... epoll_pwait resumed>[], 16, 0, NULL, 8) = 0
+2454  <... ioctl resumed>, 0x73ef279898) = 0
+2278  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2295  <... futex resumed>)              = 0
+2244  getuid( <unfinished ...>
+2288  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2454  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2295  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  <... getuid resumed>)             = 1001
+2454  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2295  <... futex resumed>)              = 1
+2278  <... futex resumed>)              = 0
+2454  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2288  <... ioctl resumed>, 0x7404fabb18) = 0
+2244  epoll_pwait(35,  <unfinished ...>
+2454  <... futex resumed>)              = 0
+2295  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2278  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2244  <... epoll_pwait resumed>[], 16, 0, NULL, 8) = 0
+2454  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2295  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2288  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2278  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2244  epoll_pwait(35,  <unfinished ...>
+2454  <... futex resumed>)              = 0
+2295  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2454  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2288  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2278  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2295  <... futex resumed>)              = 0
+2278  <... futex resumed>)              = 0
+2288  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2295  write(34, "\1\0\0\0\0\0\0\0", 8 <unfinished ...>
+2278  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2295  <... write resumed>)              = 8
+2278  <... futex resumed>)              = 1
+2244  <... epoll_pwait resumed>[{events=EPOLLIN, data={u32=34, u64=34}}], 16, 10424, NULL, 8) = 1
+2288  <... futex resumed>)              = 0
+2295  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2278  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2244  read(34,  <unfinished ...>
+2288  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2295  <... futex resumed>)              = 0
+2244  <... read resumed>"\1\0\0\0\0\0\0\0", 8) = 8
+2295  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2278  <... ioctl resumed>, 0x74070a8b18) = 0
+2244  getuid( <unfinished ...>
+2295  <... futex resumed>)              = 1
+2288  <... futex resumed>)              = 0
+2278  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2244  <... getuid resumed>)             = 1001
+2295  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2288  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2278  <... futex resumed>)              = 0
+2244  epoll_pwait(35,  <unfinished ...>
+2278  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2288  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2244  <... epoll_pwait resumed>[], 16, 0, NULL, 8) = 0
+2454  <... ioctl resumed>, 0x73ef279b18) = 0
+2278  <... futex resumed>)              = 0
+2288  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  epoll_pwait(35,  <unfinished ...>
+2454  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2288  <... futex resumed>)              = 0
+2454  <... futex resumed>)              = 0
+2288  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2278  write(34, "\1\0\0\0\0\0\0\0", 8 <unfinished ...>
+2454  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2288  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2454  <... futex resumed>)              = 0
+2288  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2278  <... write resumed>)              = 8
+2244  <... epoll_pwait resumed>[{events=EPOLLIN, data={u32=34, u64=34}}], 16, 10421, NULL, 8) = 1
+2454  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2288  <... futex resumed>)              = 0
+2244  read(34,  <unfinished ...>
+2278  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2288  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  <... read resumed>"\1\0\0\0\0\0\0\0", 8) = 8
+2454  <... futex resumed>)              = 0
+2288  <... futex resumed>)              = 1
+2278  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2244  getuid( <unfinished ...>
+2454  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2278  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2244  <... getuid resumed>)             = 1001
+2278  <... futex resumed>)              = 0
+2244  epoll_pwait(35,  <unfinished ...>
+2454  <... futex resumed>)              = 0
+2288  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2278  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  <... epoll_pwait resumed>[], 16, 0, NULL, 8) = 0
+2244  getuid( <unfinished ...>
+2454  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2288  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2278  <... futex resumed>)              = 0
+2244  <... getuid resumed>)             = 1001
+2454  <... futex resumed>)              = 0
+2288  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2278  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2454  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  epoll_pwait(35,  <unfinished ...>
+2288  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2454  <... futex resumed>)              = 0
+2244  <... epoll_pwait resumed>[], 16, 0, NULL, 8) = 0
+2454  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2288  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2295  <... ioctl resumed>, 0x7403eaeb18) = 0
+2454  <... ioctl resumed>, 0x73ef279b18) = 0
+2288  <... futex resumed>)              = 0
+2295  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2244  getuid( <unfinished ...>
+2454  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2295  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2288  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  <... getuid resumed>)             = 1001
+2454  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2295  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  epoll_pwait(35,  <unfinished ...>
+2454  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2295  <... futex resumed>)              = 0
+2288  <... futex resumed>)              = 0
+2244  <... epoll_pwait resumed>[], 16, 0, NULL, 8) = 0
+2454  <... futex resumed>)              = 0
+2295  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2288  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2244  epoll_pwait(35,  <unfinished ...>
+2454  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2295  <... futex resumed>)              = 0
+2288  <... ioctl resumed>, 0x7404fabb18) = 0
+2295  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2288  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2295  <... futex resumed>)              = 1
+2454  <... futex resumed>)              = 0
+2288  <... futex resumed>)              = 0
+2295  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2454  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2288  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2295  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2454  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2288  <... futex resumed>)              = 0
+2295  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2454  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+2295  <... futex resumed>)              = 0
+2288  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2454  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2288  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2454  <... futex resumed>)              = 0
+2288  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2295  write(34, "\1\0\0\0\0\0\0\0", 8 <unfinished ...>
+2454  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2288  <... futex resumed>)              = 0
+2454  <... futex resumed>)              = 0
+2295  <... write resumed>)              = 8
+2244  <... epoll_pwait resumed>[{events=EPOLLIN, data={u32=34, u64=34}}], 16, 10419, NULL, 8) = 1
+2288  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  read(34,  <unfinished ...>
+2454  futex(0x7467aabe08, FUTEX_WAIT_PRIVATE, 4691, NULL <unfinished ...>
+2295  futex(0x7467aabe08, FUTEX_REQUEUE_PRIVATE, 0, 1, 0x7467aabde4 <unfinished ...>
+2244  <... read resumed>"\1\0\0\0\0\0\0\0", 8) = 8
+2288  <... futex resumed>)              = 0
+2244  futex(0x7467aabde4, FUTEX_WAIT_PRIVATE, 5, NULL <unfinished ...>
+2288  futex(0x7467aabde4, FUTEX_WAIT_PRIVATE, 7, NULL <unfinished ...>
+2454  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2295  <... futex resumed>)              = 0
+2244  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2244  futex(0x7467aabde4, FUTEX_WAIT_PRIVATE, 7, NULL <unfinished ...>
+2454  futex(0x7467aabde4, FUTEX_WAIT_PRIVATE, 9, NULL <unfinished ...>
+2295  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2454  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2295  <... futex resumed>)              = 1
+2454  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2288  <... futex resumed>)              = 0
+2244  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2454  <... futex resumed>)              = 0
+2295  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2288  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  <... futex resumed>)              = 0
+2288  <... futex resumed>)              = 0
+2244  futex(0x7467aabe08, FUTEX_REQUEUE_PRIVATE, 0, 1, 0x7467aabde4 <unfinished ...>
+2454  futex(0x7467aabde4, FUTEX_WAIT_PRIVATE, 5, NULL <unfinished ...>
+2288  futex(0x7467aabe08, FUTEX_WAIT_PRIVATE, 4692, NULL <unfinished ...>
+2295  <... futex resumed>)              = 0
+2244  <... futex resumed>)              = 0
+2288  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2244  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2454  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2295  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2288  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  <... futex resumed>)              = 0
+2454  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2288  <... futex resumed>)              = 0
+2454  <... futex resumed>)              = 0
+2278  <... ioctl resumed>, 0x74070a8b18) = 0
+2244  getuid( <unfinished ...>
+2454  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2288  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2278  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2244  <... getuid resumed>)             = 1001
+2288  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2278  <... futex resumed>)              = 0
+2454  <... futex resumed>)              = 0
+2244  epoll_pwait(35,  <unfinished ...>
+2288  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2278  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  <... epoll_pwait resumed>[], 16, 0, NULL, 8) = 0
+2288  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2278  <... futex resumed>)              = 0
+2454  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2288  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2278  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2244  getuid( <unfinished ...>
+2288  <... futex resumed>)              = 0
+2244  <... getuid resumed>)             = 1001
+2454  <... ioctl resumed>, 0x73ef279b18) = 0
+2244  epoll_pwait(35,  <unfinished ...>
+2454  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2288  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  <... epoll_pwait resumed>[], 16, 0, NULL, 8) = 0
+2454  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2244  getuid( <unfinished ...>
+2454  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  <... getuid resumed>)             = 1001
+2288  <... futex resumed>)              = 1
+2278  <... futex resumed>)              = 0
+2244  epoll_pwait(35,  <unfinished ...>
+2288  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2278  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  <... epoll_pwait resumed>[], 16, 0, NULL, 8) = 0
+2454  <... futex resumed>)              = 0
+2244  epoll_pwait(35,  <unfinished ...>
+2454  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2288  <... ioctl resumed>, 0x7404fabb18) = 0
+2278  <... futex resumed>)              = 0
+2454  <... futex resumed>)              = 0
+2454  futex(0x7467b01894, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2288  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2278  futex(0x7467b01894, FUTEX_WAIT_PRIVATE, 3, NULL <unfinished ...>
+2454  <... futex resumed>)              = 0
+2288  <... futex resumed>)              = 0
+2454  futex(0x7467b018b8, FUTEX_WAIT_PRIVATE, 949, NULL <unfinished ...>
+2278  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2288  futex(0x7467b01894, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2278  futex(0x7467b018b8, FUTEX_REQUEUE_PRIVATE, 0, 1, 0x7467b01894) = 1
+2288  <... futex resumed>)              = 1
+2454  <... futex resumed>)              = 0
+2278  futex(0x7467b01894, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2288  futex(0x7467b01894, FUTEX_WAKE_PRIVATE, 1) = 0
+2278  <... futex resumed>)              = 0
+2454  write(34, "\1\0\0\0\0\0\0\0", 8 <unfinished ...>
+2278  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2288  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2454  <... write resumed>)              = 8
+2288  <... futex resumed>)              = 0
+2278  <... futex resumed>)              = 0
+2244  <... epoll_pwait resumed>[{events=EPOLLIN, data={u32=34, u64=34}}], 16, 10414, NULL, 8) = 1
+2454  futex(0x7467aabe08, FUTEX_REQUEUE_PRIVATE, 0, 1, 0x7467aabde4 <unfinished ...>
+2288  futex(0x7467aabde4, FUTEX_WAIT_PRIVATE, 5, NULL <unfinished ...>
+2278  futex(0x7467aabe08, FUTEX_WAIT_PRIVATE, 4693, NULL <unfinished ...>
+2244  read(34,  <unfinished ...>
+2454  <... futex resumed>)              = 0
+2278  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2244  <... read resumed>"\1\0\0\0\0\0\0\0", 8) = 8
+2454  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2278  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2454  <... futex resumed>)              = 1
+2278  <... futex resumed>)              = 0
+2288  <... futex resumed>)              = 0
+2244  <... futex resumed>)              = 0
+2278  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2454  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2288  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  futex(0x7467aabe08, FUTEX_REQUEUE_PRIVATE, 0, 1, 0x7467aabde4 <unfinished ...>
+2454  <... futex resumed>)              = 0
+2288  <... futex resumed>)              = 0
+2278  <... futex resumed>)              = 0
+2244  <... futex resumed>)              = 0
+2454  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2288  futex(0x7467aabe08, FUTEX_WAIT_PRIVATE, 4694, NULL <unfinished ...>
+2278  futex(0x7467aabde4, FUTEX_WAIT_PRIVATE, 5, NULL <unfinished ...>
+2244  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2454  <... ioctl resumed>, 0x73ef279b18) = 0
+2288  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2278  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2244  <... futex resumed>)              = 0
+2454  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2278  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2454  <... futex resumed>)              = 0
+2288  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2278  <... futex resumed>)              = 0
+2244  getuid( <unfinished ...>
+2454  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  <... getuid resumed>)             = 1001
+2278  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2288  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2454  <... futex resumed>)              = 0
+2278  <... futex resumed>)              = 0
+2288  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2244  epoll_pwait(35,  <unfinished ...>
+2454  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2288  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2278  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  <... epoll_pwait resumed>[], 16, 0, NULL, 8) = 0
+2454  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2288  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2278  <... futex resumed>)              = 0
+2454  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2278  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2288  <... futex resumed>)              = 0
+2244  getuid()                          = 1001
+2278  <... ioctl resumed>, 0x74070a8b18) = 0
+2244  epoll_pwait(35, [], 16, 0, NULL, 8) = 0
+2278  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2288  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2278  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2288  <... futex resumed>)              = 1
+2454  <... futex resumed>)              = 0
+2278  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  getuid( <unfinished ...>
+2454  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2288  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2278  <... futex resumed>)              = 0
+2244  <... getuid resumed>)             = 1001
+2454  <... futex resumed>)              = 0
+2278  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2295  <... ioctl resumed>, 0x7403eaeb18) = 0
+2278  <... futex resumed>)              = 0
+2244  epoll_pwait(35,  <unfinished ...>
+2454  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2295  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2278  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2244  <... epoll_pwait resumed>[], 16, 0, NULL, 8) = 0
+2454  <... futex resumed>)              = 0
+2244  getuid( <unfinished ...>
+2454  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  <... getuid resumed>)             = 1001
+2454  <... futex resumed>)              = 1
+2295  <... futex resumed>)              = 0
+2454  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2295  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  epoll_pwait(35,  <unfinished ...>
+2295  <... futex resumed>)              = 1
+2288  <... ioctl resumed>, 0x7404fabb18) = 0
+2278  <... futex resumed>)              = 0
+2244  <... epoll_pwait resumed>[], 16, 0, NULL, 8) = 0
+2295  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2244  getuid( <unfinished ...>
+2295  <... futex resumed>)              = 0
+2295  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2288  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2278  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2244  <... getuid resumed>)             = 1001
+2288  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2295  <... futex resumed>)              = 0
+2278  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2244  epoll_pwait(35,  <unfinished ...>
+2278  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2288  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2295  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2278  <... futex resumed>)              = 0
+2244  <... epoll_pwait resumed>[], 16, 0, NULL, 8) = 0
+2278  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2288  <... futex resumed>)              = 0
+2278  <... futex resumed>)              = 1
+2244  epoll_pwait(35,  <unfinished ...>
+2288  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2278  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2288  <... futex resumed>)              = 1
+2295  <... futex resumed>)              = 0
+2288  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2278  <... ioctl resumed>, 0x74070a8b18) = 0
+2295  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2288  <... futex resumed>)              = 0
+2278  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2288  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2278  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2295  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2288  <... futex resumed>)              = 0
+2278  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2295  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2278  <... futex resumed>)              = 0
+2295  <... futex resumed>)              = 0
+2295  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2288  write(34, "\1\0\0\0\0\0\0\0", 8 <unfinished ...>
+2278  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2295  <... futex resumed>)              = 0
+2278  <... futex resumed>)              = 0
+2295  futex(0x7467aabe08, FUTEX_WAIT_PRIVATE, 4695, NULL <unfinished ...>
+2288  <... write resumed>)              = 8
+2278  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  <... epoll_pwait resumed>[{events=EPOLLIN, data={u32=34, u64=34}}], 16, 10407, NULL, 8) = 1
+2288  futex(0x7467aabe08, FUTEX_REQUEUE_PRIVATE, 0, 1, 0x7467aabde4 <unfinished ...>
+2278  <... futex resumed>)              = 0
+2244  read(34,  <unfinished ...>
+2288  <... futex resumed>)              = 1
+2278  futex(0x7467aabde4, FUTEX_WAIT_PRIVATE, 5, NULL <unfinished ...>
+2244  <... read resumed>"\1\0\0\0\0\0\0\0", 8) = 8
+2288  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2278  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2244  futex(0x7467aabde4, FUTEX_WAIT_PRIVATE, 7, NULL <unfinished ...>
+2288  <... futex resumed>)              = 1
+2278  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2295  <... futex resumed>)              = 0
+2244  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2295  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2288  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2278  <... futex resumed>)              = 0
+2295  <... futex resumed>)              = 0
+2244  getuid( <unfinished ...>
+2278  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2295  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2288  <... futex resumed>)              = 0
+2244  <... getuid resumed>)             = 1001
+2288  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  epoll_pwait(35,  <unfinished ...>
+2288  <... futex resumed>)              = 1
+2278  <... futex resumed>)              = 0
+2244  <... epoll_pwait resumed>[], 16, 0, NULL, 8) = 0
+2288  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2278  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2244  getuid( <unfinished ...>
+2278  <... futex resumed>)              = 0
+2278  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  <... getuid resumed>)             = 1001
+2295  <... futex resumed>)              = 0
+2278  <... futex resumed>)              = 1
+2244  epoll_pwait(35,  <unfinished ...>
+2295  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2278  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2244  <... epoll_pwait resumed>[], 16, 0, NULL, 8) = 0
+2295  <... futex resumed>)              = 0
+2278  <... ioctl resumed>, 0x74070a8b18) = 0
+2244  getuid( <unfinished ...>
+2295  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  <... getuid resumed>)             = 1001
+2278  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2295  <... futex resumed>)              = 0
+2244  epoll_pwait(35,  <unfinished ...>
+2278  <... futex resumed>)              = 0
+2295  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2244  <... epoll_pwait resumed>[], 16, 0, NULL, 8) = 0
+2295  <... ioctl resumed>, 0x7403eaeb18) = 0
+2278  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2244  getuid( <unfinished ...>
+2295  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2278  <... futex resumed>)              = 0
+2244  <... getuid resumed>)             = 1001
+2278  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  epoll_pwait(35,  <unfinished ...>
+2295  <... futex resumed>)              = 0
+2278  <... futex resumed>)              = 1
+2244  <... epoll_pwait resumed>[], 16, 0, NULL, 8) = 0
+2295  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2278  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2244  epoll_pwait(35,  <unfinished ...>
+2295  <... futex resumed>)              = 0
+2278  <... ioctl resumed>, 0x74070a8b18) = 0
+2295  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+2295  write(34, "\1\0\0\0\0\0\0\0", 8)  = 8
+2244  <... epoll_pwait resumed>[{events=EPOLLIN, data={u32=34, u64=34}}], 16, 10401, NULL, 8) = 1
+2295  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2278  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+2244  read(34,  <unfinished ...>
+2278  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  <... read resumed>"\1\0\0\0\0\0\0\0", 8) = 8
+2295  <... futex resumed>)              = 0
+2278  <... futex resumed>)              = 1
+2244  getuid( <unfinished ...>
+2295  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2278  futex(0x7467a23c20, FUTEX_WAIT_BITSET_PRIVATE, 2, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2244  <... getuid resumed>)             = 1001
+2295  <... futex resumed>)              = 0
+2295  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  epoll_pwait(35,  <unfinished ...>
+2295  <... futex resumed>)              = 1
+2278  <... futex resumed>)              = 0
+2295  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2278  futex(0x7467a23c20, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  <... epoll_pwait resumed>[], 16, 0, NULL, 8) = 0
+2295  <... ioctl resumed>, 0x7403eaeb18) = 0
+2295  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2244  epoll_pwait(35,  <unfinished ...>
+2295  <... futex resumed>)              = 0
+2278  <... futex resumed>)              = 0
+2295  write(34, "\1\0\0\0\0\0\0\0", 8)  = 8
+2278  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  <... epoll_pwait resumed>[{events=EPOLLIN, data={u32=34, u64=34}}], 16, 10399, NULL, 8) = 1
+2295  futex(0x7467aabe08, FUTEX_REQUEUE_PRIVATE, 0, 1, 0x7467aabde4 <unfinished ...>
+2278  <... futex resumed>)              = 0
+2244  read(34,  <unfinished ...>
+2295  <... futex resumed>)              = 0
+2278  futex(0x7467aabe08, FUTEX_WAIT_PRIVATE, 4696, NULL <unfinished ...>
+2244  <... read resumed>"\1\0\0\0\0\0\0\0", 8) = 8
+2295  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1) = 0
+2278  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2244  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2295  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+2278  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2244  <... futex resumed>)              = 0
+2295  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2278  <... futex resumed>)              = 0
+2244  futex(0x7467aabe08, FUTEX_REQUEUE_PRIVATE, 0, 1, 0x7467aabde4 <unfinished ...>
+2278  futex(0x7467aabe08, FUTEX_WAIT_PRIVATE, 4697, NULL <unfinished ...>
+2244  <... futex resumed>)              = 0
+2278  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2278  futex(0x7467aabde4, FUTEX_WAIT_PRIVATE, 5, NULL <unfinished ...>
+2244  futex(0x7467aabde4, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+2278  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2244  <... futex resumed>)              = 0
+2278  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647 <unfinished ...>
+2244  getuid( <unfinished ...>
+2278  <... futex resumed>)              = 0
+2244  <... getuid resumed>)             = 1001
+2278  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2244  epoll_pwait(35, [], 16, 0, NULL, 8) = 0
+2244  getuid()                          = 1001
+2244  epoll_pwait(35, [], 16, 0, NULL, 8) = 0
+2244  epoll_pwait(35,  <unfinished ...>
+2278  <... ioctl resumed>, 0x74070a8b18) = 0
+2278  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+2278  getuid()                          = 1001
+2278  fstat(40, {st_mode=S_IFCHR|0666, st_rdev=makedev(0xa, 0x37), ...}) = 0
+2278  ioctl(40, ASHMEM_GET_SIZE, 0)     = 84
+2278  fstat(40, {st_mode=S_IFCHR|0666, st_rdev=makedev(0xa, 0x37), ...}) = 0
+2278  ioctl(40, ASHMEM_PIN, 0x74070a7f20) = 0
+2278  ioctl(9, BINDER_WRITE_READ, 0x74070a8898) = 0
+2278  futex(0x7467a23c48, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+2278  ioctl(9, BINDER_WRITE_READ <detached ...>

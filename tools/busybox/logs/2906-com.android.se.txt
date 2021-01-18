@@ -1,0 +1,13 @@
+2946  ioctl(33, BINDER_WRITE_READ <unfinished ...>
+2918  ppoll([{fd=3, events=POLLIN}, {fd=-1}, {fd=9, events=POLLIN|POLLRDHUP}, {fd=-1}], 4, NULL, NULL, 0 <unfinished ...>
+3002  epoll_pwait(41,  <unfinished ...>
+2920  futex(0x74576241b0, FUTEX_WAIT_PRIVATE, 1, NULL <unfinished ...>
+2917  rt_sigtimedwait([QUIT USR1 RTMIN], NULL, NULL, 8 <unfinished ...>
+2988  futex(0x74576aa4e0, FUTEX_WAIT_PRIVATE, 0, NULL <unfinished ...>
+2922  futex(0x7467b03510, FUTEX_WAIT_PRIVATE, 1, NULL <unfinished ...>
+2912  futex(0x7467af36d8, FUTEX_WAIT_PRIVATE, 21, NULL <unfinished ...>
+2938  ioctl(33, BINDER_WRITE_READ <unfinished ...>
+2929  ioctl(33, BINDER_WRITE_READ <unfinished ...>
+2906  epoll_pwait(35,  <unfinished ...>
+2919  futex(0x7467a14d50, FUTEX_WAIT_PRIVATE, 22, NULL <unfinished ...>
+2921  futex(0x7457624410, FUTEX_WAIT_PRIVATE, 1, NULL <detached ...>

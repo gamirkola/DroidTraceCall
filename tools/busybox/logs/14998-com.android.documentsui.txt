@@ -1,0 +1,25 @@
+15009 rt_sigtimedwait([QUIT USR1 RTMIN], NULL, NULL, 8 <unfinished ...>
+14998 epoll_pwait(35,  <unfinished ...>
+26648 futex(0x745777b83c, FUTEX_WAIT_PRIVATE, 2, NULL <unfinished ...>
+15346 futex(0x74577b76d0, FUTEX_WAIT_PRIVATE, 0, NULL <unfinished ...>
+15345 futex(0x73feff903c, FUTEX_WAIT_PRIVATE, 2, NULL <unfinished ...>
+15338 futex(0x74576d11d0, FUTEX_WAIT_PRIVATE, 0, NULL <unfinished ...>
+15337 futex(0x74575be5b0, FUTEX_WAIT_PRIVATE, 0, NULL <unfinished ...>
+15336 futex(0x7467bff490, FUTEX_WAIT_PRIVATE, 0, NULL <unfinished ...>
+15194 ioctl(9, BINDER_WRITE_READ <unfinished ...>
+15189 futex(0x7457779c3c, FUTEX_WAIT_PRIVATE, 2, NULL <unfinished ...>
+15129 epoll_pwait(63,  <unfinished ...>
+15125 epoll_pwait(55,  <unfinished ...>
+15124 futex(0x745b908c3c, FUTEX_WAIT_PRIVATE, 2, NULL <unfinished ...>
+15123 futex(0x745b90703c, FUTEX_WAIT_PRIVATE, 2, NULL <unfinished ...>
+15044 epoll_pwait(42,  <unfinished ...>
+15019 futex(0x7467af4120, FUTEX_WAIT_PRIVATE, 2, NULL <unfinished ...>
+15018 ioctl(9, BINDER_WRITE_READ <unfinished ...>
+15017 ioctl(9, BINDER_WRITE_READ <unfinished ...>
+15016 ioctl(9, BINDER_WRITE_READ <unfinished ...>
+15015 futex(0x7467af1cb0, FUTEX_WAIT_PRIVATE, 5, NULL <unfinished ...>
+15014 futex(0x745b800250, FUTEX_WAIT_PRIVATE, 9, NULL <unfinished ...>
+15013 futex(0x745b800330, FUTEX_WAIT_PRIVATE, 9, NULL <unfinished ...>
+15012 futex(0x7467a14d50, FUTEX_WAIT_PRIVATE, 10674, NULL <unfinished ...>
+15010 ppoll([{fd=3, events=POLLIN}, {fd=-1}, {fd=33, events=POLLIN|POLLRDHUP}, {fd=-1}], 4, NULL, NULL, 0 <unfinished ...>
+15004 futex(0x7467af36d8, FUTEX_WAIT_PRIVATE, 12244, NULL <detached ...>

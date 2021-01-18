@@ -1,0 +1,58 @@
+26888 futex(0x745b810c3c, FUTEX_WAIT_PRIVATE, 2, NULL <unfinished ...>
+15947 epoll_pwait(96,  <unfinished ...>
+14941 restart_syscall(<... resuming interrupted restart_syscall ...> <unfinished ...>
+24846 ioctl(9, BINDER_WRITE_READ <unfinished ...>
+20516 ioctl(9, BINDER_WRITE_READ <unfinished ...>
+6073  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+5885  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+17586 ioctl(9, BINDER_WRITE_READ <unfinished ...>
+14053 ioctl(9, BINDER_WRITE_READ <unfinished ...>
+15088 ioctl(9, BINDER_WRITE_READ <unfinished ...>
+10308 ioctl(9, BINDER_WRITE_READ <unfinished ...>
+3086  futex(0x7467bb603c, FUTEX_WAIT_PRIVATE, 2, NULL <unfinished ...>
+2883  futex(0x7467a4a43c, FUTEX_WAIT_PRIVATE, 2, NULL <unfinished ...>
+2782  futex(0x7467a4883c, FUTEX_WAIT_PRIVATE, 2, NULL <unfinished ...>
+2677  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2651  futex(0x73ffbbf43c, FUTEX_WAIT_PRIVATE, 2, NULL <unfinished ...>
+2588  futex(0x74e9ddcc18, FUTEX_WAIT_BITSET_PRIVATE, 24164, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2587  futex(0x74e9ddcc18, FUTEX_WAIT_BITSET_PRIVATE, 24168, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2586  futex(0x73ffd6ec3c, FUTEX_WAIT_PRIVATE, 2, NULL <unfinished ...>
+2526  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2524  futex(0x73ffd6d03c, FUTEX_WAIT_PRIVATE, 2, NULL <unfinished ...>
+2475  ioctl(86, BINDER_WRITE_READ <unfinished ...>
+2474  futex(0x745b9230c0, FUTEX_WAIT_BITSET_PRIVATE, 12, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2470  futex(0x73e46eb038, FUTEX_WAIT_BITSET_PRIVATE, 6, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2453  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2452  epoll_pwait(85,  <unfinished ...>
+2451  epoll_pwait(81,  <unfinished ...>
+2449  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2387  epoll_pwait(73,  <unfinished ...>
+2362  epoll_pwait(70,  <unfinished ...>
+2352  epoll_pwait(66,  <unfinished ...>
+2350  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2335  epoll_pwait(64,  <unfinished ...>
+2301  epoll_pwait(60,  <unfinished ...>
+2269  epoll_pwait(56,  <unfinished ...>
+2154  epoll_pwait(54,  <unfinished ...>
+2088  epoll_pwait(52,  <unfinished ...>
+2074  futex(0x73ffba36e8, FUTEX_WAIT_BITSET_PRIVATE, 26, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2073  futex(0x745774cad0, FUTEX_WAIT_BITSET_PRIVATE, 58, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+2046  futex(0x745779743c, FUTEX_WAIT_PRIVATE, 2, NULL <unfinished ...>
+2027  epoll_pwait(42,  <unfinished ...>
+1944  futex(0x7467af4120, FUTEX_WAIT_PRIVATE, 10, NULL <unfinished ...>
+2416  epoll_pwait(75,  <unfinished ...>
+1935  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+1929  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2446  epoll_pwait(79,  <unfinished ...>
+1927  ioctl(9, BINDER_WRITE_READ <unfinished ...>
+2358  epoll_pwait(68,  <unfinished ...>
+1926  futex(0x7457624430, FUTEX_WAIT_PRIVATE, 56, NULL <unfinished ...>
+1925  futex(0x74576243f0, FUTEX_WAIT_PRIVATE, 78, NULL <unfinished ...>
+1924  futex(0x7457624330, FUTEX_WAIT_PRIVATE, 77, NULL <unfinished ...>
+1923  futex(0x7467a14d50, FUTEX_WAIT_PRIVATE, 80, NULL <unfinished ...>
+1922  ppoll([{fd=3, events=POLLIN}, {fd=-1}, {fd=33, events=POLLIN|POLLRDHUP}, {fd=-1}], 4, NULL, NULL, 0 <unfinished ...>
+1921  rt_sigtimedwait([QUIT USR1 RTMIN], NULL, NULL, 8 <unfinished ...>
+1916  futex(0x7467af36d8, FUTEX_WAIT_PRIVATE, 123, NULL <unfinished ...>
+1906  epoll_pwait(35,  <unfinished ...>
+2588  <... futex resumed>)              = -1 EAGAIN (Resource temporarily unavailable)
+2588  futex(0x74e9ddcc18, FUTEX_WAIT_BITSET_PRIVATE, 24168, NULL, FUTEX_BITSET_MATCH_ANY <detached ...>

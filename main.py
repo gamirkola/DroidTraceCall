@@ -111,7 +111,6 @@ if __name__ == '__main__':
     probe_start = input("[+] Do you want to start the probe now? (y/n): ")
     if probe_start == 'y':
         device.shell("su -c 'cd /data/DroidTraceCall/ && nohup ./strace_all_proc.sh > /dev/null &'", 9999, 9999)
-        print('[*] Probe strated, press Q to quit...')
         a = input('[*] Press a key to stop the probe: ')
         if a:
             device.shell('pkill -f strace')
