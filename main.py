@@ -1,5 +1,12 @@
 #!/usr/bin/env python
 
+"""main.py
+====================================
+The core module of DroidTraceCall from here at the moment you can
+proceed compiling strace from the source for arm64 architecture in order to be able to install it on a phone and start
+a configurable probe that saves the logs as you want it to be ;)
+"""
+
 import os
 from pathlib import Path
 from pyfiglet import figlet_format
@@ -11,14 +18,14 @@ import keyboard
 
 # Load the public and private keys
 def adb_key():
-    custom_path = input('[+] Do you want to insert a custom adb key path (y/n)?')
+    custom_path = input('[+] Do you want to insert a custom adb key path (y/N)?')
     if custom_path == 'y':
         path = input('[*] Insert the adb key file path: ')
         if path:
             adbkey = path
         else:
             print('[*] Path invalid')
-    if custom_path == 'n':
+    if custom_path:
         adbkey = str(Path.home()) + '/.android/adbkey'
     print('[*] Adb key path: ' + adbkey)
     if not os.path.exists(adbkey):
