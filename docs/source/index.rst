@@ -4,6 +4,9 @@ Welcome to DroidTraceCall's documentation!
 .. automodule:: main
     :members:
 
+.. automodule:: adb_utils
+    :members:
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:

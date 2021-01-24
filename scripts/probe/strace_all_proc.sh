@@ -22,7 +22,7 @@ do
   if [ ! -z "$PID" ]; then
 #	  echo "PID of $TARGET_PACKAGE: "
 #	  echo "$PID"
-	  ./strace -f -p $PID -s9999 -o ./logs/$PID-$TARGET_PACKAGE.txt &>/dev/null &
+	  ./strace -f -ttt -p $PID -s 9999 -o ./logs/$PID-$TARGET_PACKAGE.out &>/dev/null &
   fi
 done < "$input"
 
