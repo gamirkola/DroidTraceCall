@@ -8,8 +8,9 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+/docs
 /source
-/build/doctrees/
+/build/
 develop-eggs/
 dist/
 downloads/
