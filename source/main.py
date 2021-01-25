@@ -58,4 +58,4 @@ if __name__ == '__main__':
 
     pull_logs = input("[+] Do you want to pull the logs? (y/n): ")
     if pull_logs == 'y':
-        device.pull('/data/DroiTraceCall/logs.gz', 'logs.gz')
+        device.pull('/data/DroidTraceCall/logs', '')
