@@ -111,15 +111,13 @@ class AdbUtils:
         """
         # connection options
         conn_options = {1: self.tcp, 2: self.usb}
-        connect_device = input("[+] Do you want to connect the device? (Y/n): ") or 'y'
-        if connect_device == 'y':
-            print("\n[!] Please select \"Always allow from this computer\" in the adb dialog!")
-            conn_type = input("[+] Select ADB connection method: \n\t[1] TCP \n\t[2] USB \n>")
-            if conn_type:
-                connect = conn_options.get(int(conn_type), '[!] Invalid option')
-                if isinstance(connect, str):
-                    print(connect)
-                    return False
-                else:
-                    device = connect()
-                    return device
+        print("\n[!] Please select \"Always allow from this computer\" in the adb dialog!")
+        conn_type = input("[+] Select ADB connection method: \n\t[1] TCP \n\t[2] USB \n>")
+        if conn_type:
+            connect = conn_options.get(int(conn_type), '[!] Invalid option')
+            if isinstance(connect, str):
+                print(connect)
+                return False
+            else:
+                device = connect()
+                return device

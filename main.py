@@ -9,33 +9,33 @@ a configurable probe that saves the logs as you want it to be ;)
 """
 
 from pyfiglet import figlet_format
-import subprocess
 from adb_utils import AdbUtils
+from strace_utils import StraceUtils
 
 
 if __name__ == '__main__':
     #prints the name of the app
     print(figlet_format('D r o i d  T r a c e  C a l l', font='slant'))
     adb_utils = AdbUtils()
+    strace_utils = StraceUtils()
     #todo check if adb is already running alse kill it
     #os.system('adb kill-server')
 
     strace_compile = input("[+] Do you want to compile the strace executable? (y/N): ")
     if strace_compile == 'y':
-        # launch strace compile script
-        subprocess.run('./compile_strace_aarch64.sh', shell=True, cwd='./scripts/strace/')
+        strace_utils.compile_strace()
 
-    device = adb_utils.connect_device()
+    connect_device = input("[+] Do you want to connect the device? (Y/n): ") or 'y'
+    if connect_device == 'y':
+        device = adb_utils.connect_device()
 
     print('[*] Granting root permissions on the device...')
     device.root()
 
+
     strace_push = input("[+] Do you want to push the strace executable to the phone? (y/N): ")
     if strace_push == 'y':
-        print('[*] Pushing strace to /data/DroidTraceCall/')
-        device.push('./tools/strace/strace', '/data/DroidTraceCall/strace')
-        print('[*] Making strace bin executable...')
-        device.shell('chmod +x /data/DroidTraceCall/strace')
+        strace_utils.push_strace(device)
 
     probe_push = input("[+] Do you want to push the probe to the device? (Y/n): ") or 'y'
     if probe_push == 'y':
