@@ -1,2 +1,2 @@
 probe:
-    probe_folder_path: data
+    probe_folder_path: sdcard

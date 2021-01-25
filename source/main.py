@@ -33,7 +33,7 @@ if __name__ == '__main__':
         print("[!] Cannot grant root permissions!")
 
     print('[*] Creating probe folder...')
-    device.shell('mkdir {}/DroidTraceCall'.format(cfg.probe['probe_folder_path']))
+    device.shell('mkdir /{}/DroidTraceCall'.format(cfg.probe['probe_folder_path']))
 
 
     probe_tools = input("[+] Insert the numbers of the tools that you want to include into the probe in the following syntax (1,2...): \nTools avaiable: \n [1] Strace\n>")
@@ -42,6 +42,10 @@ if __name__ == '__main__':
 
     probe_builder.push_tools(device)
     probe_builder.probe_build()
+
+    probe_push = input("[+] Do you want to push the probe to the device? (y/n): ")
+    if probe_push == 'y':
+        probe_builder.probe_push(device)
 
     probe_start = input("[+] Do you want to start the probe now? (Y/n): ") or 'y'
     if probe_start == 'y':
