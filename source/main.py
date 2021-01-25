@@ -11,7 +11,7 @@ a configurable probe that saves the logs as you want it to be ;)
 from pyfiglet import figlet_format
 from adb_utils import AdbUtils
 from probe_builder import ProbeBuilder
-
+from config.get_config import config as cfg
 
 if __name__ == '__main__':
     #prints the name of the app
@@ -25,8 +25,16 @@ if __name__ == '__main__':
     if connect_device == 'y':
         device = adb_utils.connect_device()
 
+    #first phone configs
     print('[*] Granting root permissions on the device...')
-    device.root()
+    try:
+        device.root()
+    except:
+        print("[!] Cannot grant root permissions!")
+
+    print('[*] Creating probe folder...')
+    device.shell('mkdir {}/DroidTraceCall'.format(cfg.probe['probe_folder_path']))
+
 
     probe_tools = input("[+] Insert the numbers of the tools that you want to include into the probe in the following syntax (1,2...): \nTools avaiable: \n [1] Strace\n>")
     if probe_tools:

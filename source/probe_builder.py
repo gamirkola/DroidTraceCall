@@ -1,10 +1,6 @@
 from strace_utils import StraceUtils
-import os
 from probe_source import android_shabang, create_if_not_logs_dir, create_package_file, while_on_packages
-
-script_dir = os.path.dirname(os.path.realpath('__file__'))
-# rel_path = "scripts/probe.sh"
-# abs_probe_path = os.path.join(script_dir, rel_path)
+from config.get_config import config as cfg
 
 class ProbeBuilder:
 
@@ -45,7 +41,7 @@ class ProbeBuilder:
             if strace_attaching and strace_syscalls:
                 strace_set = self.set_strace_tool(strace_attaching, strace_syscalls)
                 if strace_set:
-                    with open(os.path.join(script_dir, 'scripts/probe/probe.sh'), 'w') as probe_script:
+                    with open('../scripts/probe/probe.sh', 'w') as probe_script:
                         probe_script.write(self.script_shabang + self.logging_dir + self.probe_script)
 
     def push_tools(self, device):
@@ -53,7 +49,7 @@ class ProbeBuilder:
             self.strace_utils.push_strace(device)
 
     def probe_start(self, device):
-        device.shell("su -c 'cd /data/DroidTraceCall/ && nohup ./strace_all_proc.sh > /dev/null &'", 9999, 9999)
+        device.shell("su -c 'cd /data/{}/DroidTraceCall && nohup ./strace_all_proc.sh > /dev/null &'".format(cfg.probe['probe_folder_path']), 9999, 9999)
         a = input('[*] Press Enter to stop the probe: ')
         if a:
             device.shell('pkill -f strace')
