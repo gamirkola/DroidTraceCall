@@ -10,7 +10,7 @@ class StraceUtils:
     def __init__(self):
         """
         StraceUtils class:
-            Thsi class contains the main function used to build and eventually push strace to the phone
+            This class contains the main function used to build and eventually push strace to the phone
 
             -device: Instance of the device you want to work on
         """
