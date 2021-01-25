@@ -1,5 +1,6 @@
 from strace_utils import StraceUtils
 import os
+from probe_source import android_shabang, create_if_not_logs_dir, create_package_file, while_on_packages
 
 script_dir = os.path.dirname(os.path.realpath('__file__'))
 # rel_path = "scripts/probe.sh"
@@ -8,8 +9,8 @@ script_dir = os.path.dirname(os.path.realpath('__file__'))
 class ProbeBuilder:
 
     def __init__(self):
-        self.script_shabang = '#!/system/bin/sh \n'
-        self.logging_dir = '#create logs dir if it does not exist\n\tif [ ! -d ./logs ];then\n\tmkdir logs\nfi\n'
+        self.script_shabang = android_shabang
+        self.logging_dir = create_if_not_logs_dir
         self.probe_script = ''
         self.tools = ''
         self.strace_utils = StraceUtils()
@@ -31,16 +32,8 @@ class ProbeBuilder:
 
     def set_strace_tool(self, attaching_method, syscalls):
         if '2' in attaching_method:
-            self.probe_script = '#create package file\ntouch package.txt\n#insert found packages inside the file\npm list packages > package.txt\n#path to the file\ninput="package.txt" '
-            self.probe_script = self.probe_script + """\nwhile IFS= read -r line
-do
-  TARGET_PACKAGE=`echo $line | cut -d':' -f2`
-  PID=`echo $(pidof $TARGET_PACKAGE)`
-  if [ ! -z "$PID" ]; then
-      ./strace -f -t -e trace=""" + syscalls + """  -p $PID -s 9999 -o ./logs/$PID-$TARGET_PACKAGE.out &>/dev/null &
-  fi
-done < "$input"
-            """
+            self.probe_script = create_package_file
+            self.probe_script = self.probe_script + while_on_packages(syscalls)
             return True
         if '1' in attaching_method:
             return 'not implemented yet'
