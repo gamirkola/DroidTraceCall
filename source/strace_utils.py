@@ -51,11 +51,13 @@ class StraceUtils:
         Return False otherwise
         """
         try:
-            print('[*] Pushing strace to /data/DroidTraceCall/')
-            device.push('./tools/strace/strace', '/data/DroidTraceCall/strace')
-            print('[*] Making strace bin executable...')
-            device.shell('chmod +x /data/DroidTraceCall/strace')
-            return True
+            strace_push = input("[+] Do you want to push the strace executable to the phone? (Y/n): ") or 'y'
+            if strace_push == 'y':
+                print('[*] Pushing strace to /data/DroidTraceCall/')
+                device.push('./tools/strace/strace', '/data/DroidTraceCall/strace')
+                print('[*] Making strace bin executable...')
+                device.shell('chmod +x /data/DroidTraceCall/strace')
+                return True
         except Exception as e:
             print('Error: {}'.format(e))
             return False
