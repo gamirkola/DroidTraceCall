@@ -1,7 +1,7 @@
 # DroidTraceCall
 A python based sys call probe builder
 
-#Documentation
+# Documentation
 You can see a full documentation of this program here
 
 https://gamirkola.github.io/DroidTraceCall/
