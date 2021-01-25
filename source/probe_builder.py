@@ -59,3 +59,9 @@ done < "$input"
         if '1' in self.tools:
             self.strace_utils.push_strace(device)
 
+    def probe_start(self, device):
+        device.shell("su -c 'cd /data/DroidTraceCall/ && nohup ./strace_all_proc.sh > /dev/null &'", 9999, 9999)
+        a = input('[*] Press Enter to stop the probe: ')
+        if a:
+            device.shell('pkill -f strace')
+

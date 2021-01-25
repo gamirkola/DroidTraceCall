@@ -35,13 +35,10 @@ if __name__ == '__main__':
     probe_builder.push_tools(device)
     probe_builder.probe_build()
 
-    # probe_start = input("[+] Do you want to start the probe now? (Y/n): ") or 'y'
-    # if probe_start == 'y':
-    #     device.shell("su -c 'cd /data/DroidTraceCall/ && nohup ./strace_all_proc.sh > /dev/null &'", 9999, 9999)
-    #     a = input('[*] Press a key to stop the probe: ')
-    #     if a:
-    #         device.shell('pkill -f strace')
-    #
+    probe_start = input("[+] Do you want to start the probe now? (Y/n): ") or 'y'
+    if probe_start == 'y':
+        probe_builder.probe_start(device)
+
     # pull_logs = input("[+] Do you want to pull the logs? (y/n): ")
     # if pull_logs == 'y':
     #     device.pull('/data/DroidTraceCall/logs', '')
