@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to DroidTraceCall’s documentation! &#8212; DroidTraceCall 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-main">
+<span id="welcome-to-droidtracecall-s-documentation"></span><h1>Welcome to DroidTraceCall’s documentation!<a class="headerlink" href="#module-main" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="main-py">
+<h2>main.py<a class="headerlink" href="#main-py" title="Permalink to this headline">¶</a></h2>
+<p>The core module of DroidTraceCall from here at the moment you can
+proceed compiling strace from the source for arm64 architecture in order to be able to install it on a phone and start
+a configurable probe that saves the logs as you want it to be ;)</p>
+</div>
+<span class="target" id="module-adb_utils"></span><div class="section" id="adb-utils-py">
+<h2>adb_utils.py:<a class="headerlink" href="#adb-utils-py" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="adb_utils.AdbUtils">
+<em class="property">class </em><code class="sig-prename descclassname">adb_utils.</code><code class="sig-name descname">AdbUtils</code><a class="headerlink" href="#adb_utils.AdbUtils" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="adb_utils.AdbUtils.adb_key">
+<em class="property">static </em><code class="sig-name descname">adb_key</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#adb_utils.AdbUtils.adb_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the adb key path for the authentication on the phone,
+asks to the user to specify a custom path for adbkey,
+otherwise the path in linux is set to “/home/&lt;user&gt;/.android/adbkey”</p>
+<p>No parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><em>Return PythonRSASigner istance fi the keys are found</em></p></li>
+<li><p><em>Returns False if an exception occours</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="adb_utils.AdbUtils.connect_device">
+<code class="sig-name descname">connect_device</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#adb_utils.AdbUtils.connect_device" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set adb connection via USB, this is the only method that should be called</p>
+<p>No parameters</p>
+<p>Returns:
+Device: adb_shell instance of the selected device</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="adb_utils.AdbUtils.tcp">
+<code class="sig-name descname">tcp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#adb_utils.AdbUtils.tcp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set adb connections via TCP</p>
+<p>No parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><em>Device() istance if the selected device is found</em></p></li>
+<li><p><em>str error, if no device found</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="adb_utils.AdbUtils.usb">
+<code class="sig-name descname">usb</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#adb_utils.AdbUtils.usb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set adb connection via USB</p>
+<p>No parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><em>Device() istance if the selected device is found</em></p></li>
+<li><p><em>str error, if no device found</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<span class="target" id="module-strace_utils"></span><div class="section" id="strace-utils-py">
+<h2>strace_utils.py:<a class="headerlink" href="#strace-utils-py" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="strace_utils.StraceUtils">
+<em class="property">class </em><code class="sig-prename descclassname">strace_utils.</code><code class="sig-name descname">StraceUtils</code><a class="headerlink" href="#strace_utils.StraceUtils" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="strace_utils.StraceUtils.compile_strace">
+<em class="property">static </em><code class="sig-name descname">compile_strace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#strace_utils.StraceUtils.compile_strace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compile strace for aarm64 using the script in
+“/scripts/strace/compile_strace_aarch64.sh”</p>
+<p>No parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><em>Return True if the build is successful</em></p></li>
+<li><p><em>Return False otherwise</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="strace_utils.StraceUtils.push_strace">
+<em class="property">static </em><code class="sig-name descname">push_strace</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device</span></em><span class="sig-paren">)</span><a class="headerlink" href="#strace_utils.StraceUtils.push_strace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Push strace bin to the phone inside “/data/DroidTraceCall/”</p>
+<p>No parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><em>Return True if the bin is pushed correctly</em></p></li>
+<li><p><em>Return False otherwise</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">DroidTraceCall</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Mirko Gala.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
