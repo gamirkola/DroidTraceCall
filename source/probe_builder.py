@@ -36,7 +36,7 @@ class ProbeBuilder:
 
     def probe_build(self):
         if '1' in self.tools:
-            strace_attaching = input('[+] Do you what strace to be attached to (select 1 or 2):\n [1] All the processes\n [2] Only to the installed packages\n>')
+            strace_attaching = input('[+] Do you what strace to be attached to (select 1 or 2):\n\t[1] All the processes\n\t[2] Only to the installed packages\n>')
             strace_syscalls = input('[+] Insert the syscalls you want to trace (memory,network,ipc,file), type "all" for all the calls: ' )
             if strace_attaching and strace_syscalls:
                 strace_set = self.set_strace_tool(strace_attaching, strace_syscalls)

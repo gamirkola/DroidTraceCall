@@ -6,6 +6,7 @@ from adb_shell.adb_device import AdbDeviceUsb, AdbDeviceTcp
 from adb_shell.auth.sign_pythonrsa import PythonRSASigner
 import os
 from pathlib import Path
+from config.get_config import config as cfg
 
 
 class AdbUtils:
@@ -31,13 +32,13 @@ class AdbUtils:
         Return PythonRSASigner istance fi the keys are found
         Returns False if an exception occours
         """
-        custom_path = input('[+] Do you want to insert a custom adb key path (y/N)?')
-        if custom_path == 'y':
-            path = input('[*] Insert the adb key file path: ')
-            if path:
-                adbKey = path
+        custom_path = cfg.adb['adbkey_folder_path']
+        if custom_path is not None:
+            if Path(custom_path).exists():
+                adbKey = custom_path
             else:
-                print('[*] Path invalid')
+                print('[*] Path invalid ({}), check the config!'.format(custom_path))
+                exit(1)
         else:
             adbKey = str(Path.home()) + '/.android/adbkey'
         print('[*] Adb key path: ' + adbKey)

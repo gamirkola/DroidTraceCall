@@ -53,6 +53,7 @@ class StraceUtils:
         try:
             strace_push = input("[+] Do you want to push the strace executable to the phone? (Y/n): ") or 'y'
             if strace_push == 'y':
+                print(cfg.probe['intermediary_folder_path'])
                 print('[*] Pushing strace to /{}/DroidTraceCall'.format(cfg.probe['probe_folder_path']))
                 device.push('../tools/strace/strace', '/{}/DroidTraceCall/strace'.format(cfg.probe['probe_folder_path']))
                 print('[*] Making strace bin executable...')

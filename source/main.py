@@ -18,6 +18,7 @@ if __name__ == '__main__':
     print(figlet_format('D r o i d  T r a c e  C a l l', font='slant'))
     adb_utils = AdbUtils()
     probe_builder = ProbeBuilder()
+    device = False
     #todo check if adb is already running alse kill it
     #os.system('adb kill-server')
 
@@ -25,32 +26,38 @@ if __name__ == '__main__':
     if connect_device == 'y':
         device = adb_utils.connect_device()
 
-    #first phone configs
-    print('[*] Granting root permissions on the device...')
-    try:
-        device.root()
-    except:
-        print("[!] Cannot grant root permissions!")
+    if device:
+        #first phone configs
+        print('[*] Granting root permissions on the device...')
+        try:
+            device.root()
+        except:
+            print("[!] Cannot grant root permissions!")
+        #todo finish nitermediary folder path
+        print('[*] Creating probe folder...')
+        if cfg.probe['intermediary_folder_path'] is None:
+            device.shell('mkdir /{}/DroidTraceCall'.format(cfg.probe['probe_folder_path']))
+        else:
+            device.shell('mkdir /{}/DroidTraceCall'.format(cfg.probe['probe_folder_path']))
+            device.shell('mkdir /{}/DroidTraceCall'.format(cfg.probe['intermediary_folder_path']))
 
-    print('[*] Creating probe folder...')
-    device.shell('mkdir /{}/DroidTraceCall'.format(cfg.probe['probe_folder_path']))
 
-
-    probe_tools = input("[+] Insert the numbers of the tools that you want to include into the probe in the following syntax (1,2...): \nTools avaiable: \n [1] Strace\n>")
+    probe_tools = input("[+] Insert the numbers of the tools that you want to include into the probe in the following syntax (1,2...): \nTools avaiable: \n\t[1] Strace\n>")
     if probe_tools:
         probe_builder.tool_to_use(probe_tools)
 
-    probe_builder.push_tools(device)
-    probe_builder.probe_build()
+    if device:
+        probe_builder.push_tools(device)
+        probe_builder.probe_build()
 
-    probe_push = input("[+] Do you want to push the probe to the device? (y/n): ")
-    if probe_push == 'y':
-        probe_builder.probe_push(device)
+        probe_push = input("[+] Do you want to push the probe to the device? (Y/n): ")
+        if probe_push == 'y':
+            probe_builder.probe_push(device)
 
-    probe_start = input("[+] Do you want to start the probe now? (Y/n): ") or 'y'
-    if probe_start == 'y':
-        probe_builder.probe_start(device)
+        probe_start = input("[+] Do you want to start the probe now? (Y/n): ") or 'y'
+        if probe_start == 'y':
+            probe_builder.probe_start(device)
 
-    # pull_logs = input("[+] Do you want to pull the logs? (y/n): ")
-    # if pull_logs == 'y':
-    #     device.pull('/data/DroidTraceCall/logs', '')
+        # pull_logs = input("[+] Do you want to pull the logs? (y/n): ")
+        # if pull_logs == 'y':
+        #     device.pull('/data/DroidTraceCall/logs', '')
