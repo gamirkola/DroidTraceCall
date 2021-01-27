@@ -53,12 +53,21 @@ class StraceUtils:
         try:
             strace_push = input("[+] Do you want to push the strace executable to the phone? (Y/n): ") or 'y'
             if strace_push == 'y':
-                print(cfg.probe['intermediary_folder_path'])
-                print('[*] Pushing strace to /{}/DroidTraceCall'.format(cfg.probe['probe_folder_path']))
-                device.push('../tools/strace/strace', '/{}/DroidTraceCall/strace'.format(cfg.probe['probe_folder_path']))
-                print('[*] Making strace bin executable...')
-                device.shell('chmod +x /{}/DroidTraceCall/strace'.format(cfg.probe['probe_folder_path']))
-                return True
+                if cfg.probe['intermediary_folder_path'] is None:
+                    print('[*] Pushing strace to /{}/DroidTraceCall'.format(cfg.probe['probe_folder_path']))
+                    device.push('../tools/strace/strace', '/{}/DroidTraceCall/strace'.format(cfg.probe['probe_folder_path']))
+                    print('[*] Making strace bin executable...')
+                    device.shell('chmod +x /{}/DroidTraceCall/strace'.format(cfg.probe['probe_folder_path']))
+                    return True
+                else:
+                    print('[*] Pushing strace to /{}/DroidTraceCall'.format(cfg.probe['intermediary_folder_path']))
+                    device.push('../tools/strace/strace', '/{}/DroidTraceCall/strace'.format(cfg.probe['intermediary_folder_path']))
+                    print('[*] Making strace bin executable...')
+                    device.shell('chmod +x /{}/DroidTraceCall/strace'.format(cfg.probe['intermediary_folder_path']))
+                    #todo finire il move della cartella
+                    device.shell('cp -r /{0}/DroidTraceCall /{1}/DroidTraceCall')
+                    return True
+
         except Exception as e:
             print('Error: {}'.format(e))
             return False

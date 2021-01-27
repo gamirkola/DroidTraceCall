@@ -33,7 +33,7 @@ if __name__ == '__main__':
             device.root()
         except:
             print("[!] Cannot grant root permissions!")
-        #todo finish nitermediary folder path
+        #todo finish intermediary folder path
         print('[*] Creating probe folder...')
         if cfg.probe['intermediary_folder_path'] is None:
             device.shell('mkdir /{}/DroidTraceCall'.format(cfg.probe['probe_folder_path']))
