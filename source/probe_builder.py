@@ -49,7 +49,14 @@ class ProbeBuilder:
             self.strace_utils.push_strace(device)
     #todo verufy how to work with sd card dir
     def probe_start(self, device):
-        device.shell("su -c 'cd /{}/DroidTraceCall && nohup ./probe.sh > /dev/null &'".format(cfg.probe['probe_folder_path']), 9999, 9999)
+        if cfg.probe['intermediary_folder_path'] is None:
+            device.shell("su -c 'cd /{}/DroidTraceCall && nohup ./probe.sh > /dev/null &'".format(cfg.probe['probe_folder_path']), 9999, 9999)
+        else:
+            print('[*] Moving DroidTraceCall folder to data...')
+            device.shell('cp -r /{0}/DroidTraceCall /{1}/DroidTraceCall'.format(cfg.probe['intermediary_folder_path'],cfg.probe['probe_folder_path']))
+            device.shell('chmod +x /{}/DroidTraceCall/strace'.format(cfg.probe['probe_folder_path']))
+            device.shell('chmod +x /{}/DroidTraceCall/probe.sh'.format(cfg.probe['probe_folder_path']))
+            device.shell("su -c 'cd /{}/DroidTraceCall && nohup ./probe.sh > /dev/null &'".format(cfg.probe['probe_folder_path']), 9999, 9999)
         a = input('[*] Press Enter to stop the probe: ')
         if a:
             device.shell('pkill -f strace')
@@ -59,9 +66,14 @@ class ProbeBuilder:
         print('[*] Initialaizing probe build steps...')
         print('[*] Making the filesystem writable...')
         device.shell('mount -o rw,remount /')
-        #at the moment only the strace test probe is pushed
-        print('[*] Pushing probe to the device...')
-        device.push('../scripts/probe/probe.sh', '/{}/DroidTraceCall/probe.sh'.format(cfg.probe['probe_folder_path']))
-        print('[*] Making probe script executable...')
-        device.shell('chmod +x /{}/DroidTraceCall/strace_all_proc.sh'.format(cfg.probe['probe_folder_path']))
+        if cfg.probe['intermediary_folder_path'] is None:
+            # at the moment only the strace test probe is pushed
+            print('[*] Pushing probe to /{}/DroidTraceCall...'.format(cfg.probe['probe_folder_path']))
+            device.push('../scripts/probe/probe.sh', '/{}/DroidTraceCall/probe.sh'.format(cfg.probe['probe_folder_path']))
+            print('[*] Making probe script executable...')
+            device.shell('chmod +x /{}/DroidTraceCall/probe.sh'.format(cfg.probe['probe_folder_path']))
+        else:
+            # at the moment only the strace test probe is pushed
+            print('[*] Pushing probe to /{}/DroidTraceCall...'.format(cfg.probe['intermediary_folder_path']))
+            device.push('../scripts/probe/probe.sh', '/{}/DroidTraceCall/probe.sh'.format(cfg.probe['intermediary_folder_path']))
 

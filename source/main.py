@@ -38,7 +38,6 @@ if __name__ == '__main__':
         if cfg.probe['intermediary_folder_path'] is None:
             device.shell('mkdir /{}/DroidTraceCall'.format(cfg.probe['probe_folder_path']))
         else:
-            device.shell('mkdir /{}/DroidTraceCall'.format(cfg.probe['probe_folder_path']))
             device.shell('mkdir /{}/DroidTraceCall'.format(cfg.probe['intermediary_folder_path']))
 
 
@@ -50,7 +49,7 @@ if __name__ == '__main__':
         probe_builder.push_tools(device)
         probe_builder.probe_build()
 
-        probe_push = input("[+] Do you want to push the probe to the device? (Y/n): ")
+        probe_push = input("[+] Do you want to push the probe to the device? (Y/n): ") or 'y'
         if probe_push == 'y':
             probe_builder.probe_push(device)
 

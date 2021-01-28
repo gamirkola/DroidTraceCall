@@ -2,7 +2,7 @@ probe:
     #that the main probe execution path, please before changing it from data, make sure that the probe can run the specified folder (e.g. "sdcard" will not work)
     probe_folder_path: data
     # use this setting for devices that cannot pull directly from data folder
-    intermediary_folder_path:
+    intermediary_folder_path: sdcard
 adb:
     #here you can specify the adbkey file path, leave blank for the default path (/home/<user>/.android/adbkey)
     adbkey_folder_path:

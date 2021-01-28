@@ -64,8 +64,6 @@ class StraceUtils:
                     device.push('../tools/strace/strace', '/{}/DroidTraceCall/strace'.format(cfg.probe['intermediary_folder_path']))
                     print('[*] Making strace bin executable...')
                     device.shell('chmod +x /{}/DroidTraceCall/strace'.format(cfg.probe['intermediary_folder_path']))
-                    #todo finire il move della cartella
-                    device.shell('cp -r /{0}/DroidTraceCall /{1}/DroidTraceCall')
                     return True
 
         except Exception as e:
