@@ -26,6 +26,11 @@ if __name__ == '__main__':
     if connect_device == 'y':
         device = adb_utils.connect_device()
 
+    probe_tools = input("[+] Insert the numbers of the tools that you want to include into the probe in the following syntax (1,2...): \nTools avaiable: \n\t[1] Strace\n>")
+    if probe_tools:
+        probe_builder.tool_to_use(probe_tools)
+        probe_builder.probe_build()
+
     if device:
         #first phone configs
         print('[*] Granting root permissions on the device...')
@@ -40,14 +45,8 @@ if __name__ == '__main__':
         else:
             device.shell('mkdir /{}/DroidTraceCall'.format(cfg.probe['intermediary_folder_path']))
 
-
-    probe_tools = input("[+] Insert the numbers of the tools that you want to include into the probe in the following syntax (1,2...): \nTools avaiable: \n\t[1] Strace\n>")
-    if probe_tools:
-        probe_builder.tool_to_use(probe_tools)
-
     if device:
         probe_builder.push_tools(device)
-        probe_builder.probe_build()
 
         probe_push = input("[+] Do you want to push the probe to the device? (Y/n): ") or 'y'
         if probe_push == 'y':
