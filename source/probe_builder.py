@@ -57,8 +57,8 @@ class ProbeBuilder:
             device.shell('chmod +x /{}/DroidTraceCall/strace'.format(cfg.probe['probe_folder_path']))
             device.shell('chmod +x /{}/DroidTraceCall/probe.sh'.format(cfg.probe['probe_folder_path']))
             device.shell("su -c 'cd /{}/DroidTraceCall && nohup ./probe.sh > /dev/null &'".format(cfg.probe['probe_folder_path']), 9999, 9999)
-        a = input('[*] Press Enter to stop the probe: ')
-        if a == '\n':
+        a = input('[*] Press q to stop the probe: ')
+        if a == 'q':
             print('[*] Killing the probe...')
             device.shell('pkill -f strace')
             print('[*] Probe killed')

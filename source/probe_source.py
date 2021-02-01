@@ -6,16 +6,17 @@ create_package_file = 'touch package.txt\npm list packages > package.txt\ninput=
 while_on_packages = lambda syscalls:"""\nwhile IFS= read -r line
 do
   TARGET_PACKAGE=`echo $line | cut -d':' -f2`
-  UID=`echo $(dumpsys package $TARGET_PACKAGE | grep userId | tr -d '\n')`
   PID=`echo $(pidof $TARGET_PACKAGE)`
   if [ ! -z "$PID" ]; then
+      UID=`echo $(ps -o user= -p $PID)`
       """ + getAllStrace(syscalls) + """
   fi
 done < "$input"
 """
 
 
-
+def getEnterAsChar():
+    return "\n".encode("unicode_escape").decode("utf-8")
 
 #little work arounf for makins trace traceall the system calls
 def getAllStrace(syscalls):
