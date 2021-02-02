@@ -1,13 +1,14 @@
 from strace_utils import StraceUtils
-from probe_source import android_shabang, create_if_not_logs_dir, create_package_file, while_on_packages
+from probe_source import *
 from config.get_config import config as cfg
 
 class ProbeBuilder:
 
     def __init__(self):
         self.script_shabang = android_shabang
-        self.logging_dir = create_if_not_logs_dir
-        self.probe_script = ''
+        self.logging_dir = ''
+        self.strace_script = ''
+        self.logcat_script = ''
         self.tools = ''
         self.strace_utils = StraceUtils()
 
@@ -24,30 +25,44 @@ class ProbeBuilder:
             self.tools = probe_tools
             if '1' in probe_tools:
                 self.strace_build()
-                return True
+                self.logging_dir = self.logging_dir + create_if_not_strace_logs_dir
+            if '2' in probe_tools:
+                #include logcat
+                self.logging_dir = self.logging_dir + create_if_not_logcat_logs_dir
 
     def set_strace_tool(self, attaching_method, syscalls):
         if '2' in attaching_method:
-            self.probe_script = create_package_file
-            self.probe_script = self.probe_script + while_on_packages(syscalls)
+            self.strace_script = create_package_file
+            self.strace_script = self.strace_script + while_on_packages(syscalls)
             return True
         if '1' in attaching_method:
             return 'not implemented yet'
 
+
+    def set_logcat_tool(self, buffers, format):
+        self.logcat_script = logcat(buffers, format)
+        return True
+
+    #todo add controls on failed scripts
     def probe_build(self):
         if '1' in self.tools:
             strace_attaching = input('[+] Do you what strace to be attached to (select 1 or 2):\n\t[1] All the processes\n\t[2] Only to the installed packages\n>')
             strace_syscalls = input('[+] Insert the syscalls you want to trace (memory,network,ipc,file), type "all" for all the calls: ' )
             if strace_attaching and strace_syscalls:
                 strace_set = self.set_strace_tool(strace_attaching, strace_syscalls)
-                if strace_set:
-                    with open('../scripts/probe/probe.sh', 'w') as probe_script:
-                        probe_script.write(self.script_shabang + self.logging_dir + self.probe_script)
+
+        if '2' in self.tools:
+            logcat_buffers = input('[+] Insert the buffers you want to log (radio,events,system,main), type "all" for all the buffers: ')
+            logcat_format = input('[+] Insert logcat format options: ')
+            logcat_set = self.set_logcat_tool(logcat_buffers, logcat_format)
+
+        with open('../scripts/probe/probe.sh', 'w') as probe_script:
+            probe_script.write(self.script_shabang + self.logging_dir + self.logcat_script + self.strace_script)
 
     def push_tools(self, device):
         if '1' in self.tools:
             self.strace_utils.push_strace(device)
-    #todo verufy how to work with sd card dir
+
     def probe_start(self, device):
         if cfg.probe['intermediary_folder_path'] is None:
             device.shell("su -c 'cd /{}/DroidTraceCall && nohup ./probe.sh > /dev/null &'".format(cfg.probe['probe_folder_path']), 9999, 9999)

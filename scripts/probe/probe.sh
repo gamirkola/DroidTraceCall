@@ -1,8 +1,11 @@
 #!/system/bin/sh 
-if [ ! -d ./logs ];then
-	mkdir logs
+if [ ! -d ./strace_logs ];then
+	mkdir strace_logs
 fi
-touch package.txt
+if [ ! -d ./logcat_logs ];then
+	mkdir logcat_logs
+fi
+logcat -b all -v uid -d > ./logcat_logs/logcat_log.outtouch package.txt
 pm list packages > package.txt
 input="package.txt"
 while IFS= read -r line
@@ -10,7 +13,7 @@ do
   TARGET_PACKAGE=`echo $line | cut -d':' -f2`
   PID=`echo $(pidof $TARGET_PACKAGE)`
   if [ ! -z "$PID" ]; then
-      UID=`echo $(ps -o user= -p $PID)`
-      ./strace -f -t -p $PID -s 9999 -o ./logs/$PID-$UID-$TARGET_PACKAGE.out &>/dev/null &
+      UID=`echo $(ps -o user= -p $PID | xargs id -u )`
+      ./strace -f -t -p $PID -s 9999 -o ./strace_logs/$PID-$UID-$TARGET_PACKAGE.out &>/dev/null &
   fi
 done < "$input"
