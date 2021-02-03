@@ -45,9 +45,18 @@ class ProbeBuilder:
 
     #todo add controls on failed scripts
     def probe_build(self):
+        strace_window_script = False
         if '1' in self.tools:
             strace_attaching = input('[+] Do you what strace to be attached to (select 1 or 2):\n\t[1] All the processes\n\t[2] Only to the installed packages\n>')
             strace_syscalls = input('[+] Insert the syscalls you want to trace (memory,network,ipc,file), type "all" for all the calls: ' )
+            strace_window =  input('[+] Do you want to run strace for a determined time? [y/N]' )
+            strace_window_script = False
+            if strace_window == 'y':
+                time = input('[+] Insert the running time in sec (e.g. 5,50...) or minutes (e.g. 5m...): ')
+                strace_window_script = strace_time_window(time)
+            else:
+                strace_window_script = False
+
             if strace_attaching and strace_syscalls:
                 strace_set = self.set_strace_tool(strace_attaching, strace_syscalls)
 
@@ -55,9 +64,8 @@ class ProbeBuilder:
             logcat_buffers = input('[+] Insert the buffers you want to log (radio,events,system,main), type "all" for all the buffers: ')
             logcat_format = input('[+] Insert logcat format options: ')
             logcat_set = self.set_logcat_tool(logcat_buffers, logcat_format)
-
         with open('../scripts/probe/probe.sh', 'w') as probe_script:
-            probe_script.write(self.script_shabang + self.logging_dir + self.logcat_script + self.strace_script)
+            probe_script.write(self.script_shabang + self.logging_dir + self.logcat_script + self.strace_script +( strace_window_script if strace_window_script else ''))
 
     def push_tools(self, device):
         if '1' in self.tools:

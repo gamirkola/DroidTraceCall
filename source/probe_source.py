@@ -1,8 +1,8 @@
 #todo insert logging dirs as configs
-android_shabang = '#!/system/bin/sh \n'
+android_shabang = '#!/system/bin/sh\n'
 bash_shabang = '#!/bin/bash \n'
 create_if_not_strace_logs_dir = 'if [ ! -d ./strace_logs ];then\n\tmkdir strace_logs\nfi\n'
-create_package_file = 'touch package.txt\npm list packages > package.txt\ninput="package.txt"'
+create_package_file = 'touch package.txt\npm list packages > package.txt\ninput="package.txt"\n'
 while_on_packages = lambda syscalls:"""\nwhile IFS= read -r line
 do
   TARGET_PACKAGE=`echo $line | cut -d':' -f2`
@@ -13,6 +13,8 @@ do
   fi
 done < "$input"
 """
+
+strace_time_window = lambda time: 'sleep ' + time + ' && pkill -f strace'
 
 create_if_not_logcat_logs_dir = 'if [ ! -d ./logcat_logs ];then\n\tmkdir logcat_logs\nfi\n'
 logcat = lambda buffers,format: 'logcat -b ' + buffers + ' -v ' + format + ' -d > ./logcat_logs/logcat_log.out\n'
