@@ -26,7 +26,7 @@ if __name__ == '__main__':
     if connect_device == 'y':
         device = adb_utils.connect_device()
 
-    probe_tools = input("[+] Insert the numbers of the tools that you want to include into the probe in the following syntax (1,2...): \nTools avaiable: \n\t[1] Strace\n\t[2] Logcat\n>")
+    probe_tools = input("[+] Insert the numbers of the tools that you want to include into the probe in the following syntax (1,2...): \nTools avaiable: \n\t[1] Strace\n\t[2] Logcat\n\t[3] Top\n>")
     if probe_tools:
         probe_builder.tool_to_use(probe_tools)
         probe_builder.probe_build()

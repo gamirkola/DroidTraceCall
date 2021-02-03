@@ -5,6 +5,9 @@ fi
 if [ ! -d ./logcat_logs ];then
 	mkdir logcat_logs
 fi
+if [ ! -d ./top_logs ];then
+	mkdir top_logs
+fi
 logcat -b all -v uid -d > ./logcat_logs/logcat_log.out
 touch package.txt
 pm list packages > package.txt
@@ -19,4 +22,9 @@ do
       ./strace -f -t -p $PID -s 9999 -o ./strace_logs/$PID-$UID-$TARGET_PACKAGE.out &>/dev/null &
   fi
 done < "$input"
-sleep 50 && pkill -f strace
+end=$((SECONDS+10))
+
+while [ $SECONDS -lt $end ]; do
+    TIMESTAMP=`echo $(date +"%H_%M_%S")`
+    top -m 500 -n 1 > ./top_logs/top_log_$TIMESTAMP.txt
+done

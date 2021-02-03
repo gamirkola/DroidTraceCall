@@ -1,6 +1,8 @@
 #todo insert logging dirs as configs
+#shabangs
 android_shabang = '#!/system/bin/sh\n'
 bash_shabang = '#!/bin/bash \n'
+#strace options
 create_if_not_strace_logs_dir = 'if [ ! -d ./strace_logs ];then\n\tmkdir strace_logs\nfi\n'
 create_package_file = 'touch package.txt\npm list packages > package.txt\ninput="package.txt"\n'
 while_on_packages = lambda syscalls:"""\nwhile IFS= read -r line
@@ -13,12 +15,23 @@ do
   fi
 done < "$input"
 """
+strace_time_window = lambda time: 'sleep ' + time + ' && pkill -f strace\n'
 
-strace_time_window = lambda time: 'sleep ' + time + ' && pkill -f strace'
-
+#logcat options
 create_if_not_logcat_logs_dir = 'if [ ! -d ./logcat_logs ];then\n\tmkdir logcat_logs\nfi\n'
 logcat = lambda buffers,format: 'logcat -b ' + buffers + ' -v ' + format + ' -d > ./logcat_logs/logcat_log.out\n'
 
+#top options
+create_if_not_top_logs_dir = 'if [ ! -d ./top_logs ];then\n\tmkdir top_logs\nfi\n'
+#to be implemented
+# top_per_app = lambda top: ''
+global_top = 'top -m 500 -n 1 > ./top_logs/top_log_$TIMESTAMP.txt'
+top_loop = lambda seconds:"""end=$((SECONDS+"""+ seconds +"""))
+
+while [ $SECONDS -lt $end ]; do
+    TIMESTAMP=`echo $(date +"%H_%M_%S")`
+    """+ global_top +"""
+done"""
 
 def getEnterAsChar():
     # you can use \\n too
