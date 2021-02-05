@@ -16,7 +16,7 @@ do
 done < "$input"
 """
 strace_time_window = lambda time: 'sleep ' + time + ' && pkill -f strace\n'
-
+# todo make logcat configurable per each app
 #logcat options
 create_if_not_logcat_logs_dir = 'if [ ! -d ./logcat_logs ];then\n\tmkdir logcat_logs\nfi\n'
 logcat = lambda buffers,format: 'logcat -b ' + buffers + ' -v ' + format + ' -d > ./logcat_logs/logcat_log.out\n'
@@ -25,6 +25,7 @@ logcat = lambda buffers,format: 'logcat -b ' + buffers + ' -v ' + format + ' -d 
 create_if_not_top_logs_dir = 'if [ ! -d ./top_logs ];then\n\tmkdir top_logs\nfi\n'
 #to be implemented
 # top_per_app = lambda top: ''
+# todo make top lines configurable and also packages
 global_top = 'top -m 500 -n 1 > ./top_logs/top_log_$TIMESTAMP.txt'
 top_loop = lambda seconds:"""end=$((SECONDS+"""+ seconds +"""))
 
@@ -40,6 +41,6 @@ def getEnterAsChar():
 #little work arounf for makins trace traceall the system calls
 def getAllStrace(syscalls):
     if syscalls == 'all':
-        return './strace -f -t -p $PID -s 9999 -o ./strace_logs/$PID-$UID-$TARGET_PACKAGE.out &>/dev/null &'
+        return './strace -f -t -p $PID -s 9999 -o ./strace_logs/$UID-$PID-$TARGET_PACKAGE.out &>/dev/null &'
     else:
-        return './strace -f -t -e trace=' + syscalls + ' -p $PID -s 9999 -o ./strace_logs/$PID-$UID-$TARGET_PACKAGE.out &>/dev/null &'
+        return './strace -f -t -e trace=' + syscalls + ' -p $PID -s 9999 -o ./strace_logs/$UID-$PID-$TARGET_PACKAGE.out &>/dev/null &'

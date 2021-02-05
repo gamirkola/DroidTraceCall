@@ -19,10 +19,10 @@ do
   PID=`echo $(pidof $TARGET_PACKAGE)`
   if [ ! -z "$PID" ]; then
       UID=`echo $(ps -o user= -p $PID | xargs id -u )`
-      ./strace -f -t -p $PID -s 9999 -o ./strace_logs/$PID-$UID-$TARGET_PACKAGE.out &>/dev/null &
+      ./strace -f -t -p $PID -s 9999 -o ./strace_logs/$UID-$PID-$TARGET_PACKAGE.out &>/dev/null &
   fi
 done < "$input"
-end=$((SECONDS+10))
+end=$((SECONDS+5))
 
 while [ $SECONDS -lt $end ]; do
     TIMESTAMP=`echo $(date +"%H_%M_%S")`
