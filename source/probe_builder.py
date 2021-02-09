@@ -81,6 +81,11 @@ class ProbeBuilder:
             device.shell("su -c 'cd /{}/DroidTraceCall && nohup ./probe.sh > /dev/null &'".format(cfg.probe['probe_folder_path']), 9999, 9999)
         else:
             print('[*] Moving DroidTraceCall folder to data...')
+            try:
+                device.shell('mount -o rw,remount /')
+                device.root()
+            except:
+                print("[!] Cannot grant root permissions!")
             device.shell('cp -r /{0}/DroidTraceCall /{1}/DroidTraceCall'.format(cfg.probe['intermediary_folder_path'],cfg.probe['probe_folder_path']))
             device.shell('chmod +x /{}/DroidTraceCall/strace'.format(cfg.probe['probe_folder_path']))
             device.shell('chmod +x /{}/DroidTraceCall/probe.sh'.format(cfg.probe['probe_folder_path']))
