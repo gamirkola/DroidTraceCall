@@ -1,6 +1,11 @@
 from strace_utils import StraceUtils
 from probe_source import *
 from config.get_config import config as cfg
+import requests
+from bs4 import BeautifulSoup
+import re
+import wget
+from os import path, remove
 
 class ProbeBuilder:
 
@@ -13,6 +18,24 @@ class ProbeBuilder:
         self.tools = ''
         self.strace_utils = StraceUtils()
 
+
+
+    def busy_box_download(self):
+        download_busybox = input("Busybox must be pushed to the phone to execute some of the tools, do you want to do it now? (Y/n)") or 'y'
+        if download_busybox == 'y':
+            if path.exists('busybox-armv8l'):
+                remove_busybox = input('It looks like you already have a busybox bin, do you want to download it again? (y/N)')
+                if remove_busybox:
+                    remove("busybox-armv8l")
+                else:
+                    return True
+            print('Downloading the latest version of busybox...')
+            busybox_binaries_url = 'https://busybox.net/downloads/binaries/'
+            busybox_binaries_page = requests.get(busybox_binaries_url)
+            bin_soup = BeautifulSoup(busybox_binaries_page.content, 'html.parser')
+            multiarch_url = bin_soup.find_all(href=re.compile("defconfig"))
+            latest_multiarch = multiarch_url[len(multiarch_url) - 1]
+            wget.download(busybox_binaries_url + latest_multiarch['href'] + 'busybox-armv8l', '../tools/busybox/busybox-armv8l')
 
     def strace_build(self):
         strace_compile = input("[+] Do you want to compile the strace executable? (y/N): ")
@@ -31,7 +54,7 @@ class ProbeBuilder:
                 #include logcat
                 self.logging_dir = self.logging_dir + create_if_not_logcat_logs_dir
             if '3' in probe_tools:
-                # include logcat
+                # include top
                 self.logging_dir = self.logging_dir + create_if_not_top_logs_dir
 
     def set_strace_tool(self, attaching_method, syscalls):
@@ -102,13 +125,11 @@ class ProbeBuilder:
         print('[*] Making the filesystem writable...')
         device.shell('mount -o rw,remount /')
         if cfg.probe['intermediary_folder_path'] is None:
-            # at the moment only the strace test probe is pushed
             print('[*] Pushing probe to /{}/DroidTraceCall...'.format(cfg.probe['probe_folder_path']))
             device.push('../scripts/probe/probe.sh', '/{}/DroidTraceCall/probe.sh'.format(cfg.probe['probe_folder_path']))
             print('[*] Making probe script executable...')
             device.shell('chmod +x /{}/DroidTraceCall/probe.sh'.format(cfg.probe['probe_folder_path']))
         else:
-            # at the moment only the strace test probe is pushed
             print('[*] Pushing probe to /{}/DroidTraceCall...'.format(cfg.probe['intermediary_folder_path']))
             device.push('../scripts/probe/probe.sh', '/{}/DroidTraceCall/probe.sh'.format(cfg.probe['intermediary_folder_path']))
 
