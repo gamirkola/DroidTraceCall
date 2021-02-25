@@ -21,12 +21,12 @@ class ProbeBuilder:
 
 
     def busy_box_download(self):
-        download_busybox = input("Busybox must be pushed to the phone to execute some of the tools, do you want to do it now? (Y/n)") or 'y'
+        download_busybox = input("Busybox must be pushed to the phone to execute some of the tools, do you want to do it now? (Y/n) ") or 'y'
         if download_busybox == 'y':
-            if path.exists('busybox-armv8l'):
-                remove_busybox = input('It looks like you already have a busybox bin, do you want to download it again? (y/N)')
+            if path.exists('../tools/busybox/busybox-armv8l'):
+                remove_busybox = input('It looks like you already have a busybox bin, do you want to download it again? (y/N) ')
                 if remove_busybox:
-                    remove("busybox-armv8l")
+                    remove("../tools/busybox/busybox-armv8l")
                 else:
                     return True
             print('Downloading the latest version of busybox...')
@@ -36,6 +36,27 @@ class ProbeBuilder:
             multiarch_url = bin_soup.find_all(href=re.compile("defconfig"))
             latest_multiarch = multiarch_url[len(multiarch_url) - 1]
             wget.download(busybox_binaries_url + latest_multiarch['href'] + 'busybox-armv8l', '../tools/busybox/busybox-armv8l')
+            return True
+
+    def busybox_push(self, device):
+        try:
+            busybox_push = input("[+] Do you want to push the busybox executable to the phone? (Y/n): ") or 'y'
+            if busybox_push == 'y':
+                if cfg.probe['intermediary_folder_path'] is None:
+                    print('[*] Pushing busybox to /{}/DroidTraceCall'.format(cfg.probe['probe_folder_path']))
+                    device.push('../tools/busybox/busybox-armv8l', '/{}/DroidTraceCall/busybox-armv8l'.format(cfg.probe['probe_folder_path']))
+                    print('[*] Making busybox bin executable...')
+                    device.shell('chmod +x /{}/DroidTraceCall/busybox-armv8l'.format(cfg.probe['probe_folder_path']))
+                    return True
+                else:
+                    print('[*] Pushing busybox to /{}/DroidTraceCall'.format(cfg.probe['intermediary_folder_path']))
+                    device.push('../tools/busybox/busybox-armv8l', '/{}/DroidTraceCall/busybox-armv8l'.format(cfg.probe['intermediary_folder_path']))
+                    print('[*] Making busybox bin executable...')
+                    device.shell('chmod +x /{}/DroidTraceCall/busybox-armv8l'.format(cfg.probe['intermediary_folder_path']))
+                    return True
+        except Exception as e:
+            print('Error: {}'.format(e))
+            return False
 
     def strace_build(self):
         strace_compile = input("[+] Do you want to compile the strace executable? (y/N): ")
@@ -44,7 +65,6 @@ class ProbeBuilder:
             return True
 
     def tool_to_use(self, probe_tools):
-        #at the moment only strace is implemented
         if probe_tools:
             self.tools = probe_tools
             if '1' in probe_tools:
@@ -98,6 +118,8 @@ class ProbeBuilder:
     def push_tools(self, device):
         if '1' in self.tools:
             self.strace_utils.push_strace(device)
+        if path.exists('../tools/busybox/busybox-armv8l'):
+            self.busybox_push(device)
 
     def probe_start(self, device):
         if cfg.probe['intermediary_folder_path'] is None:
