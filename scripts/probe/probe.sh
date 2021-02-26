@@ -8,7 +8,9 @@ fi
 if [ ! -d ./top_logs ];then
 	mkdir top_logs
 fi
-logcat -b all -v uid -d > ./logcat_logs/logcat_log.out
+if [ ! -d ./pstree_logs ];then
+	mkdir pstree_logs
+fi
 touch package.txt
 pm list packages > package.txt
 input="package.txt"
@@ -19,6 +21,7 @@ do
   PID=`echo $(pidof $TARGET_PACKAGE)`
   if [ ! -z "$PID" ]; then
       UID=`echo $(ps -o user= -p $PID | xargs id -u )`
+      ./busybox-armv8l pstree -p > ./pstree_logs/pstree.out
       ./strace -f -t -p $PID -s 9999 -o ./strace_logs/$UID-$PID-$TARGET_PACKAGE.out &>/dev/null &
   fi
 done < "$input"

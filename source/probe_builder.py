@@ -14,6 +14,7 @@ class ProbeBuilder:
         self.logging_dir = ''
         self.strace_script = ''
         self.logcat_script = ''
+        self.pstree_script = ''
         self.top_script = ''
         self.tools = ''
         self.strace_utils = StraceUtils()
@@ -76,19 +77,17 @@ class ProbeBuilder:
             if '3' in probe_tools:
                 # include top
                 self.logging_dir = self.logging_dir + create_if_not_top_logs_dir
+            if '4' in probe_tools:
+                # include pstree
+                self.logging_dir = self.logging_dir + create_if_not_pstree_logs_dir
 
-    def set_strace_tool(self, attaching_method, syscalls):
+    def set_strace_tool(self, attaching_method, syscalls, include_pstree):
         if '2' in attaching_method:
             self.strace_script = create_package_file
-            self.strace_script = self.strace_script + while_on_packages(syscalls)
+            self.strace_script = self.strace_script + while_on_packages(syscalls, include_pstree)
             return True
         if '1' in attaching_method:
             return 'not implemented yet'
-
-
-    def set_logcat_tool(self, buffers, format):
-        self.logcat_script = logcat(buffers, format)
-        return True
 
     #todo add controls on failed scripts
     def probe_build(self):
@@ -104,11 +103,12 @@ class ProbeBuilder:
             else:
                 strace_window_script = False
             if strace_attaching and strace_syscalls:
-                strace_set = self.set_strace_tool(strace_attaching, strace_syscalls)
+                include_pstree = True if '4' in self.tools else False
+                strace_set = self.set_strace_tool(strace_attaching, strace_syscalls, include_pstree)
         if '2' in self.tools:
             logcat_buffers = input('[+] Insert the buffers you want to log (radio,events,system,main), type "all" for all the buffers: ')
             logcat_format = input('[+] Insert logcat format options: ')
-            logcat_set = self.set_logcat_tool(logcat_buffers, logcat_format)
+            logcat(logcat_buffers, logcat_format)
         if '3' in self.tools:
             seconds = input('[+] Insert top logging interval in sec (e.g. 5,50...): ')
             self.top_script = top_loop(seconds)
