@@ -108,7 +108,7 @@ class ProbeBuilder:
         if '2' in self.tools:
             logcat_buffers = input('[+] Insert the buffers you want to log (radio,events,system,main), type "all" for all the buffers: ')
             logcat_format = input('[+] Insert logcat format options: ')
-            logcat(logcat_buffers, logcat_format)
+            self.logcat_script = logcat(logcat_buffers, logcat_format)
         if '3' in self.tools:
             seconds = input('[+] Insert top logging interval in sec (e.g. 5,50...): ')
             self.top_script = top_loop(seconds)
