@@ -87,7 +87,8 @@ class ProbeBuilder:
             self.strace_script = self.strace_script + while_on_packages(syscalls, include_pstree)
             return True
         if '1' in attaching_method:
-            return 'not implemented yet'
+            self.strace_script = get_all_pids
+            self.strace_script = self.strace_script + while_on_all_pids(syscalls, include_pstree, True)
 
     #todo add controls on failed scripts
     def probe_build(self):
