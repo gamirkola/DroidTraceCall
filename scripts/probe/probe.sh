@@ -1,30 +1,28 @@
 #!/system/bin/sh
+
+trim(){
+    local var="$*"
+    # remove leading whitespace characters
+    var="${var#"${var%%[![:space:]]*}"}"
+    # remove trailing whitespace characters
+    var="${var%"${var##*[![:space:]]}"}"
+    printf '%s' "$var"
+}
+
 if [ ! -d ./strace_logs ];then
 	mkdir strace_logs
 fi
-if [ ! -d ./pstree_logs ];then
-	mkdir pstree_logs
-fi
-get_all_pids(){
-    ALL_PIDS=()
-    first_line=0
-    ps -A -o pid > pids.txt
-    while IFS= read -r line
-    do
-        if [[ $first_line -eq 1 && $line != "" ]];then
-            ALL_PIDS+=("$line")
-        else
-            first_line=1
-        fi
-    done < "pids.txt"
-}
-get_all_pids
-
-for PID in "${ALL_PIDS[@]}"
+ps -A -o pid > pids.txt
+first_line=0
+while IFS= read -r line
 do
-  if [ ! -z "$PID" ]; then
-      UID=`echo $(ps -o user= -p $PID | xargs id -u )`
-      ./busybox-armv8l pstree -p > ./pstree_logs/pstree.out
-      ./strace -f -t -p $PID -s 9999 -o ./strace_logs/$UID-$PID.out &>/dev/null &
-  fi
-done
+    if [[ $first_line -eq 1 && $line != "" && ! -z $line ]];then
+        PID=$(echo $line | tr -d ' ')
+        echo "piddo $PID"
+        UID=`echo $(ps -o user= -p $PID | xargs id -u )`
+        echo "pid and uid $PID $UID"
+        ./strace -f -t -p $PID -s 9999 -o ./strace_logs/$UID-$PID.out &>/dev/null &
+    else
+        first_line=1
+    fi
+done < "pids.txt"
