@@ -19,16 +19,15 @@ do
 done < "packages.txt"
 """
 
-while_on_all_pids = lambda syscalls, pstree, allpids: """\nfirst_line=0
+while_on_all_pids = lambda syscalls, pstree, allpids: """\n
 while IFS= read -r line
 do
-    if [[ $first_line -eq 1 && $line != "" && ! -z $line ]];then
-        PID=trim $line
+    if [[ $line != "" && ! -z $line ]];then
+        PID=`echo $(echo $line | tr -d " ")`
         UID=`echo $(ps -o user= -p $PID | xargs id -u )`
+        """ + get_package_from_uid +"""
         """ + getPsTree(pstree) + """
         """ + getAllStrace(syscalls, allpids) + """
-    else
-        first_line=1
     fi
 done < "pids.txt"
 """
@@ -73,9 +72,9 @@ def getEnterAsChar():
 def getAllStrace(syscalls, all_pids):
     if all_pids:
         if syscalls == 'all':
-            return './strace -f -t -p $PID -s 9999 -o ./strace_logs/$UID-$PID.out &>/dev/null &'
+            return './strace -t -p $PID -s 9999 -o ./strace_logs/$UID-$PID.out &>/dev/null &'
         else:
-            return './strace -f -t -e trace=' + syscalls + ' -p $PID -s 9999 -o ./strace_logs/$UID-$PID.out &>/dev/null &'
+            return './strace -t -e trace=' + syscalls + ' -p $PID -s 9999 -o ./strace_logs/$UID-$PID.out &>/dev/null &'
     else:
         if syscalls == 'all':
             return './strace -f -t -p $PID -s 9999 -o ./strace_logs/$UID-$PID-$TARGET_PACKAGE.out &>/dev/null &'
@@ -121,4 +120,5 @@ def getPsTree(pstree):
 # get_package_pids
 # """
 
-get_all_pids = 'ps -A -o pid > pids.txt'
+get_all_pids = 'ps -A -o pid | tr -d "PID" > pids.txt'
+get_package_from_uid = "PACKAGE_NAME=`echo $(pm list packages -3 -U | grep -w $UID | cut -d':' -f2 | cut -d' ' -f1)`"
