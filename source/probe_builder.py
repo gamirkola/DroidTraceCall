@@ -83,16 +83,12 @@ class ProbeBuilder:
 
     def set_strace_tool(self, attaching_method, syscalls, include_pstree, strace_20sec_loop_script):
         if '2' in attaching_method:
-            if strace_20sec_loop_script:
-                self.strace_script = create_package_file
-                self.strace_script = self.strace_script + while_on_packages(syscalls, include_pstree,strace_20sec_loop_script)
-            else:
-                self.strace_script = create_package_file
-                self.strace_script = self.strace_script + while_on_packages(syscalls, include_pstree)
+            self.strace_script = create_package_file
+            self.strace_script = self.strace_script + while_on_packages(syscalls, include_pstree, strace_20sec_loop_script)
             return True
         if '1' in attaching_method:
             self.strace_script = get_all_pids
-            self.strace_script = self.strace_script + while_on_all_pids(syscalls, include_pstree, True)
+            self.strace_script = self.strace_script + while_on_all_pids(syscalls, include_pstree, True, strace_20sec_loop_script)
             return True
 
     #todo add controls on failed scripts

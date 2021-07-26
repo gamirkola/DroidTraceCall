@@ -3,26 +3,40 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 
 #define BUFFER_SIZE 128
 #define time_window 20
-#define FNAME "%s_%d.txt"
+#define FNAME "./strace_logs/%d/%s.log"
+#define DNAME "./strace_logs/%d/"
 #define DELTA_S 20
 
 char cur_file_name[128];
+char cur_dir_name[128];
+
 
 int main(int argc, const char **argv) {
 
     char *output_string = (char*)malloc(BUFFER_SIZE);
-    unsigned int current_file = 0;
+    unsigned int current_log = 0;
+    struct stat st = {0};
 
-    snprintf(cur_file_name, 128, FNAME, argv[1], current_file);
+    //create the first logging directory
+    snprintf(cur_dir_name, 128, DNAME, current_log);
+
+    if (stat(cur_dir_name, &st) == -1) {
+        mkdir(cur_dir_name, 0700);
+    }
+
+    //create the first log file
+    snprintf(cur_file_name, 128, FNAME, current_log, argv[1]);
     FILE *fp = fopen(cur_file_name, "wb");
 
     //print error if the file does not exist
     if (fp == NULL){
-        printf("Error opening the file %s", cur_file_name);
+//        printf("Error opening the file %s", cur_file_name);
         return -1;
     }
 
@@ -32,9 +46,15 @@ int main(int argc, const char **argv) {
         fprintf(fp, "%s", output_string);
         fflush(fp);
         if(time(NULL) - t >= DELTA_S){
-            ++current_file;
+            ++current_log;
             fclose(fp);
-            snprintf(cur_file_name, 128, FNAME, argv[1], current_file);
+
+            snprintf(cur_dir_name, 128, DNAME, current_log);
+            if (stat(cur_dir_name, &st) == -1) {
+                mkdir(cur_dir_name, 0700);
+            }
+
+            snprintf(cur_file_name, 128, FNAME, current_log, argv[1]);
             fp = fopen(cur_file_name, "w");
             t = time(NULL);
         }

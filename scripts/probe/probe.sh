@@ -1,21 +1,19 @@
 #!/system/bin/sh
 if [ ! -d ./strace_logs ];then
-	mkdir strace_logs
+    mkdir strace_logs
 fi
-ps -A -o pid | tr -d "PID" > pids.txt
+touch package.txt
+pm list packages > packages.txt
 
 while IFS= read -r line
 do
-    if [[ $line != "" && ! -z $line ]];then
-        PID=`echo $(echo $line | tr -d " ")`
-        UID=`echo $(ps -o user= -p $PID | xargs id -u )`
-        PACKAGE_NAME=`echo $(pm list packages -3 -U | grep -w $UID | cut -d':' -f2 | cut -d' ' -f1)`
-        if [[ ! -z $PID && $PID != "" ]];then
-          if [[ $PACKAGE_NAME != "" && ! -z $PACKAGE_NAME ]];then
-            ./strace -t -p $PID -s 9999 2>&1 | ./split_logs $UID-$PID-$PACKAGE_NAME &>/dev/null &
-          else
-            ./strace -t -p $PID -s 9999 2>&1 | ./split_logs $UID-$PID  &>/dev/null &
-          fi
-        fi
-    fi
-done < "pids.txt"
+  TARGET_PACKAGE=`echo $line | cut -d':' -f2`
+  PID=`echo $(pidof $TARGET_PACKAGE)`
+  if [ ! -z "$PID" ]; then
+      UID=`echo $(ps -o user= -p $PID | xargs id -u )`
+      
+      if [[ ! -z $PID && $PID != "" ]];then
+                    ./strace -f -t -p $PID -s 9999 2>&1 | ./split_logs $UID-$PID-$TARGET_PACKAGE &>/dev/null &
+                fi
+  fi
+done < "packages.txt"

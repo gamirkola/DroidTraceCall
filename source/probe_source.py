@@ -4,25 +4,25 @@ android_shabang = '#!/system/bin/sh\n'
 bash_shabang = '#!/bin/bash \n'
 
 # strace options
-create_if_not_strace_logs_dir = lambda timestamp: """if [ ! -d ./strace_logs"""+ '_'+timestamp if timestamp else ''+""" ];then
-    mkdir strace_logs"""+ '_'+timestamp if timestamp else ''"""+
-fi"""
+create_if_not_strace_logs_dir = """if [ ! -d ./strace_logs ];then
+    mkdir strace_logs
+fi\n"""
 create_package_file = 'touch package.txt\npm list packages > packages.txt\n'
 
 # todo can i make a single code function?
-while_on_packages = lambda syscalls, pstree: """\nwhile IFS= read -r line
+while_on_packages = lambda syscalls, pstree, split_logs: """\nwhile IFS= read -r line
 do
   TARGET_PACKAGE=`echo $line | cut -d':' -f2`
   PID=`echo $(pidof $TARGET_PACKAGE)`
   if [ ! -z "$PID" ]; then
       UID=`echo $(ps -o user= -p $PID | xargs id -u )`
       """ + getPsTree(pstree) + """
-      """ + getAllStrace(syscalls) + """
+      """ + getAllStrace(syscalls, False, split_logs) + """
   fi
 done < "packages.txt"
 """
 # todo skip the first pid file line
-while_on_all_pids = lambda syscalls, pstree, allpids: """\n
+while_on_all_pids = lambda syscalls, pstree, allpids, split_logs: """\n
 while IFS= read -r line
 do
     if [[ $line != "" && ! -z $line ]];then
@@ -30,7 +30,7 @@ do
         UID=`echo $(ps -o user= -p $PID | xargs id -u )`
         """ + get_package_from_uid +"""
         """ + getPsTree(pstree) + """
-        """ + getAllStrace(syscalls, allpids) + """
+        """ + getAllStrace(syscalls, allpids, split_logs) + """
     fi
 done < "pids.txt"
 """
@@ -73,32 +73,68 @@ def getEnterAsChar():
 
 
 # little work around for makins trace traceall the system calls
-def getAllStrace(syscalls, all_pids):
+def getAllStrace(syscalls, all_pids, split_logs):
     if all_pids:
         if syscalls == 'all':
-            return """if [[ ! -z $PID && $PID != "" ]];then
+            if split_logs:
+                return """if [[ ! -z $PID && $PID != "" ]];then
                 if [[ $PACKAGE_NAME != "" && ! -z $PACKAGE_NAME ]];then
-                    ./strace -t -p $PID -s 9999 -o ./strace_logs/$UID-$PID-$PACKAGE_NAME.out &>/dev/null &
+                    ./strace -t -p $PID -s 9999 2>&1 | ./split_logs $UID-$PID-$PACKAGE_NAME &>/dev/null &
                 else
-                    ./strace -t -p $PID -s 9999 -o ./strace_logs/$UID-$PID.out &>/dev/null &
+                    ./strace -t -p $PID -s 9999 2>&1 | ./split_logs $UID-$PID  &>/dev/null &
+                fi
+            fi"""
+            else:
+                return """if [[ ! -z $PID && $PID != "" ]];then
+                    if [[ $PACKAGE_NAME != "" && ! -z $PACKAGE_NAME ]];then
+                        ./strace -t -p $PID -s 9999 -o ./strace_logs/$UID-$PID-$PACKAGE_NAME.out &>/dev/null &
+                    else
+                        ./strace -t -p $PID -s 9999 -o ./strace_logs/$UID-$PID.out &>/dev/null &
+                    fi
+                fi"""
+        else:
+            if split_logs:
+                return """if [[ ! -z $PID && $PID != "" ]];then
+                if [[ $PACKAGE_NAME != "" && ! -z $PACKAGE_NAME ]];then
+                    ./strace -t -e trace=""" + syscalls + """ -p $PID -s 9999 2>&1 | ./split_logs $UID-$PID-$PACKAGE_NAME &>/dev/null &
+                else
+                    ./strace -t -e trace=""" + syscalls + """ -p $PID -s 9999 2>&1 | ./split_logs $UID-$PID &>/dev/null &
+                fi
+            fi"""
+            else:
+                return """if [[ ! -z $PID && $PID != "" ]];then
+                if [[ $PACKAGE_NAME != "" && ! -z $PACKAGE_NAME ]];then
+                    ./strace -t -e trace=""" + syscalls + """ -p $PID -s 9999 -o ./strace_logs/$UID-$PID-$PACKAGE_NAME.out &>/dev/null &
+                else
+                    ./strace -t -e trace=""" + syscalls + """ -p $PID -s 9999 -o ./strace_logs/$UID-$PID.out &>/dev/null &
                 fi
             fi"""
     else:
         if syscalls == 'all':
-            return """if [[ ! -z $PID && $PID != "" ]];then
-                ./strace -f -t -p $PID -s 9999 -o ./strace_logs/$UID-$PID-$TARGET_PACKAGE.out &>/dev/null &
-            fi"""
+            if split_logs:
+                return """if [[ ! -z $PID && $PID != "" ]];then
+                    ./strace -f -t -p $PID -s 9999 2>&1 | ./split_logs $UID-$PID-$TARGET_PACKAGE &>/dev/null &
+                fi"""
+            else:
+                return """if [[ ! -z $PID && $PID != "" ]];then
+                    ./strace -f -t -p $PID -s 9999 -o ./strace_logs/$UID-$PID-$TARGET_PACKAGE.out &>/dev/null &
+                fi"""
         else:
-            return """ if [[ ! -z $PID && $PID != "" ]];then
-                ./strace -f -t -e trace=' + syscalls + ' -p $PID -s 9999 -o ./strace_logs/$UID-$PID-$TARGET_PACKAGE.out &>/dev/null &
-            fi"""
+            if split_logs:
+                return """ if [[ ! -z $PID && $PID != "" ]];then
+                    ./strace -f -t -e trace=""" + syscalls + """ -p $PID -s 9999 2>&1 | ./split_logs $UID-$PID-$TARGET_PACKAGE &>/dev/null &
+                fi"""
+            else:
+                return """ if [[ ! -z $PID && $PID != "" ]];then
+                    ./strace -f -t -e trace=""" + syscalls + """ -p $PID -s 9999 -o ./strace_logs/$UID-$PID-$TARGET_PACKAGE.out &>/dev/null &
+                fi"""
 
 strace_20sec_loop = "while true; do start_strace; sleep 20; pkill -f strace; done"
-start_strace_function=lambda syscalls, pstree, allpids: """start_strace(){
+start_strace_function=lambda syscalls, pstree, allpids, split_logs: """start_strace(){
         current_time=$(get_timestamp)
         """+create_if_not_strace_logs_dir('$current_time')+"""
         """+get_all_pids+"""
-        """+while_on_all_pids(syscalls, pstree, True) if allpids else while_on_packages(syscalls, pstree)+"""
+        """+while_on_all_pids(syscalls, pstree, True, split_logs) if allpids else while_on_packages(syscalls, pstree, split_logs)+"""
 }"""
 
 def getPsTree(pstree):
