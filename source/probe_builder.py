@@ -81,14 +81,19 @@ class ProbeBuilder:
                 # include pstree
                 self.logging_dir = self.logging_dir + create_if_not_pstree_logs_dir
 
-    def set_strace_tool(self, attaching_method, syscalls, include_pstree):
+    def set_strace_tool(self, attaching_method, syscalls, include_pstree, strace_20sec_loop_script):
         if '2' in attaching_method:
-            self.strace_script = create_package_file
-            self.strace_script = self.strace_script + while_on_packages(syscalls, include_pstree)
+            if strace_20sec_loop_script:
+                self.strace_script = create_package_file
+                self.strace_script = self.strace_script + while_on_packages(syscalls, include_pstree,strace_20sec_loop_script)
+            else:
+                self.strace_script = create_package_file
+                self.strace_script = self.strace_script + while_on_packages(syscalls, include_pstree)
             return True
         if '1' in attaching_method:
             self.strace_script = get_all_pids
             self.strace_script = self.strace_script + while_on_all_pids(syscalls, include_pstree, True)
+            return True
 
     #todo add controls on failed scripts
     def probe_build(self):
@@ -97,15 +102,19 @@ class ProbeBuilder:
             strace_attaching = input('[+] Do you what strace to be attached to (select 1 or 2):\n\t[1] All the processes\n\t[2] Only to the installed packages\n>')
             strace_syscalls = input('[+] Insert the syscalls you want to trace (memory,network,ipc,file), type "all" for all the calls: ' )
             strace_window =  input('[+] Do you want to run strace for a determined time (y/N)? ' )
-            strace_window_script = False
+            strace_20sec_loop = input('[+] Do you want to save strace logs every 20 seconds in different timestamped folders? (y/N)? ' )
             if strace_window == 'y':
                 time = input('[+] Insert the running time in sec (e.g. 5,50...) or minutes (e.g. 5m...): ')
                 strace_window_script = strace_time_window(time)
             else:
                 strace_window_script = False
+            if strace_20sec_loop == 'y':
+                strace_20sec_loop_script = True
+            else:
+                strace_20sec_loop_script = False
             if strace_attaching and strace_syscalls:
                 include_pstree = True if '4' in self.tools else False
-                strace_set = self.set_strace_tool(strace_attaching, strace_syscalls, include_pstree)
+                strace_set = self.set_strace_tool(strace_attaching, strace_syscalls, include_pstree, strace_20sec_loop_script)
         if '2' in self.tools:
             logcat_buffers = input('[+] Insert the buffers you want to log (radio,events,system,main), type "all" for all the buffers: ')
             logcat_format = input('[+] Insert logcat format options: ')
@@ -113,8 +122,11 @@ class ProbeBuilder:
         if '3' in self.tools:
             seconds = input('[+] Insert top logging interval in sec (e.g. 5,50...): ')
             self.top_script = top_loop(seconds)
-        with open('../scripts/probe/probe.sh', 'w') as probe_script:
-            probe_script.write(self.script_shabang + self.logging_dir + self.logcat_script + self.strace_script +( strace_window_script if strace_window_script else '') + self.top_script)
+        if strace_set:
+            with open('../scripts/probe/probe.sh', 'w') as probe_script:
+                probe_script.write(self.script_shabang + self.logging_dir + self.logcat_script + self.strace_script +( strace_window_script if strace_window_script else '') + self.top_script)
+        else:
+            print('Error in generating strace script!')
 
     def push_tools(self, device):
         if '1' in self.tools:

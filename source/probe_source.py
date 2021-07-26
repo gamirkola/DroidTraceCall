@@ -2,8 +2,11 @@
 # shabangs
 android_shabang = '#!/system/bin/sh\n'
 bash_shabang = '#!/bin/bash \n'
+
 # strace options
-create_if_not_strace_logs_dir = 'if [ ! -d ./strace_logs ];then\n\tmkdir strace_logs\nfi\n'
+create_if_not_strace_logs_dir = lambda timestamp: """if [ ! -d ./strace_logs"""+ '_'+timestamp if timestamp else ''+""" ];then
+    mkdir strace_logs"""+ '_'+timestamp if timestamp else ''"""+
+fi"""
 create_package_file = 'touch package.txt\npm list packages > packages.txt\n'
 
 # todo can i make a single code function?
@@ -18,7 +21,7 @@ do
   fi
 done < "packages.txt"
 """
-
+# todo skip the first pid file line
 while_on_all_pids = lambda syscalls, pstree, allpids: """\n
 while IFS= read -r line
 do
@@ -34,6 +37,7 @@ done < "pids.txt"
 
 strace_time_window = lambda time: 'sleep ' + time + ' && pkill -f strace\n'
 # todo make logcat configurable per each app
+
 # logcat options
 create_if_not_logcat_logs_dir = 'if [ ! -d ./logcat_logs ];then\n\tmkdir logcat_logs\nfi\n'
 logcat = lambda buffers, format: 'logcat -b ' + buffers + ' -v ' + format + ' -d > ./logcat_logs/logcat_log.out\n'
@@ -72,21 +76,40 @@ def getEnterAsChar():
 def getAllStrace(syscalls, all_pids):
     if all_pids:
         if syscalls == 'all':
-            return './strace -t -p $PID -s 9999 -o ./strace_logs/$UID-$PID.out &>/dev/null &'
-        else:
-            return './strace -t -e trace=' + syscalls + ' -p $PID -s 9999 -o ./strace_logs/$UID-$PID.out &>/dev/null &'
+            return """if [[ ! -z $PID && $PID != "" ]];then
+                if [[ $PACKAGE_NAME != "" && ! -z $PACKAGE_NAME ]];then
+                    ./strace -t -p $PID -s 9999 -o ./strace_logs/$UID-$PID-$PACKAGE_NAME.out &>/dev/null &
+                else
+                    ./strace -t -p $PID -s 9999 -o ./strace_logs/$UID-$PID.out &>/dev/null &
+                fi
+            fi"""
     else:
         if syscalls == 'all':
-            return './strace -f -t -p $PID -s 9999 -o ./strace_logs/$UID-$PID-$TARGET_PACKAGE.out &>/dev/null &'
+            return """if [[ ! -z $PID && $PID != "" ]];then
+                ./strace -f -t -p $PID -s 9999 -o ./strace_logs/$UID-$PID-$TARGET_PACKAGE.out &>/dev/null &
+            fi"""
         else:
-            return './strace -f -t -e trace=' + syscalls + ' -p $PID -s 9999 -o ./strace_logs/$UID-$PID-$TARGET_PACKAGE.out &>/dev/null &'
+            return """ if [[ ! -z $PID && $PID != "" ]];then
+                ./strace -f -t -e trace=' + syscalls + ' -p $PID -s 9999 -o ./strace_logs/$UID-$PID-$TARGET_PACKAGE.out &>/dev/null &
+            fi"""
 
+strace_20sec_loop = "while true; do start_strace; sleep 20; pkill -f strace; done"
+start_strace_function=lambda syscalls, pstree, allpids: """start_strace(){
+        current_time=$(get_timestamp)
+        """+create_if_not_strace_logs_dir('$current_time')+"""
+        """+get_all_pids+"""
+        """+while_on_all_pids(syscalls, pstree, True) if allpids else while_on_packages(syscalls, pstree)+"""
+}"""
 
 def getPsTree(pstree):
     if (pstree):
         return './busybox-armv8l pstree -p > ./pstree_logs/pstree.out'
     else:
         return ''
+
+get_timestamp = """get_timestamp() {
+  date +"%Y-%m-%d_%H:%M:%S"
+}"""
 
 
 # get_all_pids = """get_all_pids(){
