@@ -59,6 +59,26 @@ class ProbeBuilder:
             print('Error: {}'.format(e))
             return False
 
+    def split_strace_logs_push(self, device):
+        try:
+            split_logs_push = input("[+] Do you want to push the split_strace_logs executable to the phone? (Y/n): ") or 'y'
+            if split_logs_push == 'y':
+                if cfg.probe['intermediary_folder_path'] is None:
+                    print('[*] Pushing split_strace_logs to /{}/DroidTraceCall'.format(cfg.probe['probe_folder_path']))
+                    device.push('../tools/strace/split_log/split_logs', '/{}/DroidTraceCall/split_logs'.format(cfg.probe['probe_folder_path']))
+                    print('[*] Making busybox bin executable...')
+                    device.shell('chmod +x /{}/DroidTraceCall/split_logs'.format(cfg.probe['probe_folder_path']))
+                    return True
+                else:
+                    print('[*] Pushing split_strace_logs to /{}/DroidTraceCall'.format(cfg.probe['intermediary_folder_path']))
+                    device.push('../tools/strace/split_log/split_logs', '/{}/DroidTraceCall/split_logs'.format(cfg.probe['intermediary_folder_path']))
+                    print('[*] Making busybox bin executable...')
+                    device.shell('chmod +x /{}/DroidTraceCall/split_logs'.format(cfg.probe['intermediary_folder_path']))
+                    return True
+        except Exception as e:
+            print('Error: {}'.format(e))
+            return False
+
     def strace_build(self):
         strace_compile = input("[+] Do you want to compile the strace executable? (y/N): ")
         if strace_compile == 'y':
@@ -125,6 +145,7 @@ class ProbeBuilder:
             print('Error in generating strace script!')
 
     def push_tools(self, device):
+        self.split_strace_logs_push(device)
         if '1' in self.tools:
             self.strace_utils.push_strace(device)
         if path.exists('../tools/busybox/busybox-armv8l'):
