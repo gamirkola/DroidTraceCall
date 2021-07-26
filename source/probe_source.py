@@ -73,6 +73,7 @@ def getEnterAsChar():
 
 
 # little work around for makins trace traceall the system calls
+#todo THIS FUNCTION MUST BE REWRITTEN
 def getAllStrace(syscalls, all_pids, split_logs):
     if all_pids:
         if syscalls == 'all':

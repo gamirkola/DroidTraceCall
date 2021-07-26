@@ -145,9 +145,9 @@ class ProbeBuilder:
             print('Error in generating strace script!')
 
     def push_tools(self, device):
-        self.split_strace_logs_push(device)
         if '1' in self.tools:
             self.strace_utils.push_strace(device)
+            self.split_strace_logs_push(device)
         if path.exists('../tools/busybox/busybox-armv8l'):
             self.busybox_push(device)
 
