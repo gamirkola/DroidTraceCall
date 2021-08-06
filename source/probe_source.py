@@ -35,7 +35,7 @@ do
 done < "pids.txt"
 """
 
-strace_time_window = lambda time: 'sleep ' + time + ' && pkill -f strace\n'
+strace_time_window = lambda time: 'sleep ' + time + ' && pkill -f strace && pkill -f split_logs\n'
 # todo make logcat configurable per each app
 
 # logcat options
@@ -130,7 +130,7 @@ def getAllStrace(syscalls, all_pids, split_logs):
                     ./strace -f -t -e trace=""" + syscalls + """ -p $PID -s 9999 -o ./strace_logs/$UID-$PID-$TARGET_PACKAGE.out &>/dev/null &
                 fi"""
 
-strace_20sec_loop = "while true; do start_strace; sleep 20; pkill -f strace; done"
+strace_20sec_loop = "while true; do start_strace; sleep 20; pkill -f strace; pkill -f split_logs; done"
 start_strace_function=lambda syscalls, pstree, allpids, split_logs: """start_strace(){
         current_time=$(get_timestamp)
         """+create_if_not_strace_logs_dir('$current_time')+"""
