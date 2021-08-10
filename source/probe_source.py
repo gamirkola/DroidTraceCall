@@ -7,7 +7,7 @@ bash_shabang = '#!/bin/bash \n'
 create_if_not_strace_logs_dir = """if [ ! -d ./strace_logs ];then
     mkdir strace_logs
 fi\n"""
-create_package_file = 'touch package.txt\npm list packages > packages.txt\n'
+create_package_file = 'touch packages.txt\npm list packages > packages.txt\n'
 
 # todo can i make a single code function?
 while_on_packages = lambda syscalls, pstree, split_logs: """\nwhile IFS= read -r line
@@ -22,7 +22,7 @@ do
 done < "packages.txt"
 """
 # todo skip the first pid file line
-while_on_all_pids = lambda syscalls, pstree, allpids, split_logs: """\n
+while_on_all_pids = lambda syscalls, pstree, split_logs: """\n
 while IFS= read -r line
 do
     if [[ $line != "" && ! -z $line ]];then
@@ -30,7 +30,7 @@ do
         UID=`echo $(ps -o user= -p $PID | xargs id -u )`
         """ + get_package_from_uid +"""
         """ + getPsTree(pstree) + """
-        """ + getAllStrace(syscalls, allpids, split_logs) + """
+        """ + getAllStrace(syscalls, True, split_logs) + """
     fi
 done < "pids.txt"
 """
