@@ -138,7 +138,7 @@ class ProbeBuilder:
         if '3' in self.tools:
             seconds = input('[+] Insert top logging interval in sec (e.g. 5,50...): ')
             self.top_script = top_loop(seconds)
-        if strace_set:
+        if self.tools != '':
             with open('../scripts/probe/probe.sh', 'w') as probe_script:
                 probe_script.write(self.script_shabang + self.logging_dir + self.logcat_script + self.strace_script +( strace_window_script if strace_window_script else '') + self.top_script)
         else:
