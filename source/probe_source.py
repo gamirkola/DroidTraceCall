@@ -40,7 +40,7 @@ strace_time_window = lambda time: 'sleep ' + time + ' && pkill -f strace && pkil
 
 # logcat options
 create_if_not_logcat_logs_dir = 'if [ ! -d ./logcat_logs ];then\n\tmkdir logcat_logs\nfi\n'
-logcat = lambda buffers, format: 'logcat -b ' + buffers + ' -v ' + format + ' -d > ./logcat_logs/logcat_log.out\n'
+logcat = lambda buffers, format: 'logcat -b ' + buffers + ' -v ' + format + ' > ./logcat_logs/logcat_log.out &\n'
 
 # todo end logcat pid loop
 logcat_pid_loop = lambda seconds: """end=$((SECONDS+""" + seconds + """))
