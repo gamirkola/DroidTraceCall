@@ -23,10 +23,10 @@ int main(int argc, const char **argv) {
     struct stat st = {0};
     FILE *fileStream;
     int current_log;
-    char i[2];
+    char i[4];
 
     fileStream = fopen(INDEX, "r");
-    fgets(i,2,fileStream);
+    fgets(i,4,fileStream);
     fclose(fileStream);
     current_log = atoi(i);
 
@@ -51,7 +51,7 @@ int main(int argc, const char **argv) {
         fprintf(fp, "%s", output_string);
         fflush(fp);
         fileStream = fopen(INDEX, "r");
-        fgets(i,2,fileStream);
+        fgets(i,4,fileStream);
         fclose(fileStream);
         if(current_log < atoi(i)){
             fclose(fp);
